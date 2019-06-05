@@ -1,0 +1,10 @@
+html
+    body
+        h1 Hello world
+        a(href="/create") Create post
+        each post in list
+            - var url = '/post/' + post._id
+            div
+                a(href=url)
+                    h2 #{post.title}
+                p By #{post.author}

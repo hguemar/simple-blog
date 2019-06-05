@@ -1,0 +1,14 @@
+html
+    body
+        h1 #{post.title}
+        div
+            h3 By #{post.author}
+            p  #{post.body}
+            em #{post.date}
+        - var url = '/post/' + post._id
+        form(action=url method="POST")
+            input(type="text" name="comment")
+            input(type="submit", value="submit comment")
+        - var comments = post.comments ? post.comments.sort((a, b) => a.date < b.date) : []
+        each comment in comments
+            p #{comment.content}
