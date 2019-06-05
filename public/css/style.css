@@ -1,5 +1,5 @@
 body {
-  padding: 50px;
+  /*padding: 50px;*/
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
@@ -9,4 +9,13 @@ a {
 
 .postTitle {
   font-size: 20px;
+}
+
+.menu {
+  padding: 2%;
+  background-color: lightgrey;
+}
+
+.row {
+  padding: 2%;
 }

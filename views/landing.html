@@ -4,8 +4,6 @@ block css-page
 	link(rel='stylesheet', href='/css/style.css')
 
 block content
-	h1 Simple Blog
-
 	.row
 		each post in posts
 			.col-xl-4.col-lg-6.col-sm-12
@@ -18,6 +16,6 @@ block content
 				p= post.text.substr(0, 30) + '...'
 
 				each tag in post.tags
-					p= tag
+					span= tag+ " "
 
 				
