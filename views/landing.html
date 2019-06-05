@@ -1,0 +1,11 @@
+extends layout
+
+block content
+
+	each post in posts
+
+		a(href="/posts/" + post._id) #{post.title}
+		|
+		| by 
+		|
+		a(href="/authors/" + post.author._id) #{post.author.username}
