@@ -20,7 +20,7 @@ app.use(bodyParser.json());
 app.use(cors());
 app.use(helmet());
 app.disable("x-powered-by");
-app.use("/server/", simpleBlogRoutes);
+app.use("/server", simpleBlogRoutes);
 
 /**
  * Démarrage du serveur sur le port
