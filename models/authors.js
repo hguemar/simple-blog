@@ -15,6 +15,7 @@ const authorsSchema = new mongoose.Schema(
 	{
 		type: String,
 	},
+	posts: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Posts' }],
 });
 
 authorsSchema.statics.findByLogin = async function(login) 

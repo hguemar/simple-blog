@@ -12,10 +12,12 @@ block content
 				|
 				| by 
 				|
-				a(href="/authors/" + post.author._id) #{post.author.username} #{post.author.email}
+				a(href="/authors/" + post.author._id) #{post.author.username} 
+				| #{post.author.email}
 				p= post.text.substr(0, 30) + '...'
 
 				each tag in post.tags
-					span= tag+ " "
-
-				
+					span 
+					|
+					a(href="/tags/" + tag._id) #{tag.tag} 
+					|

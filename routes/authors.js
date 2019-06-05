@@ -9,9 +9,12 @@ router.get('/', async (req, res) => {
 
 router.get('/:authorId', async (req, res) => 
 {
-	const author = await req.context.models.Authors.findById(req.params.authorId,);
-
-	res.render('author', author);
+	// Get all posts id with the given tagID
+	var authorsposts = await req.context.models.Authors.findById(req.params.authorId,);
+	// Get all posts
+	var posts = await req.context.models.Posts.find({ _id : { $in : authorsposts.posts}}).populate('author tags').exec();
+	
+	res.render('landing', { posts: posts });
 });
 
 export default router;

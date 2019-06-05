@@ -2,35 +2,25 @@ import mongoose from 'mongoose';
 
 const tagsSchema = new mongoose.Schema(
 {
-	username: 
-	{
-		type: String,
-		unique: true,
-	},
-	password: 
+	tag: 
 	{
 		type: String,
 	},
-	email: 
-	{
-		type: String,
-	},
+	posts: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Posts' }],
 });
 
-authorsSchema.statics.findByLogin = async function(login) 
+tagsSchema.statics.findByTag = async function(mot) 
 {
-	let author = await this.findOne({ username: login, });
+	let tag = await this.findOne({ tag: mot, });
 
-	if (!author) { author = await this.findOne({ email: login }); }
-
-	return author;
+	return tag;
 };
 
-authorsSchema.pre('remove', function(next) 
+tagsSchema.pre('remove', function(next) 
 {
-	this.model('Posts').deleteMany({ author: this._id }, next);
+	this.model('Posts').deleteMany({ tag: this._id }, next);
 });
 
-const Authors = mongoose.model('Authors', authorsSchema);
+const Tags = mongoose.model('Tags', tagsSchema);
 
-export default Authors;
+export default Tags;
