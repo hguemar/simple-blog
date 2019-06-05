@@ -1,11 +1,23 @@
 extends layout
 
+block css-page
+	link(rel='stylesheet', href='/css/style.css')
+
 block content
+	h1 Simple Blog
 
-	each post in posts
+	.row
+		each post in posts
+			.col-xl-4.col-lg-6.col-sm-12
+				.postTitle
+					a(href="/posts/" + post._id) #{post.title}
+				|
+				| by 
+				|
+				a(href="/authors/" + post.author._id) #{post.author.username} #{post.author.email}
+				p= post.text.substr(0, 30) + '...'
 
-		a(href="/posts/" + post._id) #{post.title}
-		|
-		| by 
-		|
-		a(href="/authors/" + post.author._id) #{post.author.username}
+				each tag in post.tags
+					p= tag
+
+				

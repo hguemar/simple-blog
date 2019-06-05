@@ -7,6 +7,14 @@ const authorsSchema = new mongoose.Schema(
 		type: String,
 		unique: true,
 	},
+	password: 
+	{
+		type: String,
+	},
+	email: 
+	{
+		type: String,
+	},
 });
 
 authorsSchema.statics.findByLogin = async function(login) 

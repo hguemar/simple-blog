@@ -7,8 +7,12 @@ html(lang='fr')
 		meta(name='description', content='')
 		meta(name='author', content='')
 
-		link(rel='stylesheet', href='/css/style.css')
+		block css-page
+			link(rel='stylesheet', href='/css/style.css')
+		
 		link(href='/css/bootstrap.css', rel='stylesheet')
 
 	body
-		block content
+		.container
+			include menu.pug
+			block content
