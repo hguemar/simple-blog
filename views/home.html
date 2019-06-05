@@ -1,10 +1,14 @@
 html
+    include head.pug
     body
-        h1 Hello world
-        a(href="/post/create") Create post
-        each post in list
-            - var url = '/post/' + post._id
-            div
-                a(href=url)
-                    h2 #{post.title}
-                p By #{post.author}
+        include menu.pug
+        div(class="container article-list")
+            each post in list
+                - var url = '/post/' + post._id
+                    div(class="card")
+                        div(class="card-body")
+                            h5(class="card-title") #{post.title}
+                            p(class="card-text") By #{post.author}
+                            div(class="card-body")
+                                span Text content
+                            a(class="btn btn-primary" href=url) Go to article
