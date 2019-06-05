@@ -1,0 +1,22 @@
+{
+  "name": "simpleblogapi",
+  "version": "1.0.0",
+  "description": "Simple blog for NoSQL lessons",
+  "main": "server.js",
+  "scripts": {
+    "start": "",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Grégoire CHENAL / Lucas MARTEL",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "helmet": "^3.18.0",
+    "mongodb": "^3.2.7"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.1"
+  }
+}
