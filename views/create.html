@@ -1,17 +1,17 @@
 html
+    include head.pug
     body
-        form(method="post", action="/post/create")
-            p
-                b Title
-                br
-                input(type="text", name="title")
-            p    
-                b Content
-                br
-                textarea(name="body")
-            p
-                b Author
-                br
-                input(type="text", name="author")
-            p
-                input(type="submit", value="submit")
+        include menu.pug
+        div(class="container")
+            h3 Create an article
+            form(method="post" action="/post/create")
+                div(class="form-group")
+                    label(for="title") Title
+                    input(class="form-control" type="text" name="title")
+                div(class="form-group")
+                    label(for="body") Content
+                    textarea(class="form-control" name="body")
+                div(class="form-group")
+                    label(for="author") Author
+                    input(class="form-control" type="text" name="author")
+                button(class="btn btn-primary" type="submit") Submit article
