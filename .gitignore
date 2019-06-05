@@ -25,7 +25,7 @@ PdfViewerClient/.gitignore
 
 # dependencies
 /node_modules
-/api/node_modules
+/API/node_modules
 
 # profiling files
 chrome-profiler-events.json
