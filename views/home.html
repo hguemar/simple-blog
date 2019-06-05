@@ -14,3 +14,7 @@ html
                             p(class="card-text")
                                 em #{post.date}
                             a(class="btn btn-primary" href=url) Go to article
+            div(class="button-toolbar")
+                div(class="btn-group mr-2")
+                    each page in pages
+                        a(class=page.classes href=page.url) #{page.content}
