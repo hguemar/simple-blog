@@ -1,7 +1,7 @@
 html
     body
         h1 Hello world
-        a(href="/create") Create post
+        a(href="/post/create") Create post
         each post in list
             - var url = '/post/' + post._id
             div

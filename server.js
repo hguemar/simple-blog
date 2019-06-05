@@ -1,83 +1,34 @@
-const express = require('express');
-const cons = require('consolidate');
-const MongoClient = require('mongodb').MongoClient;
-const ObjectId = require('mongodb').ObjectID;
+var express = require("express");
+var MongoClient = require("mongodb");
+var bodyParser = require('body-parser')
+var cons = require('consolidate');
 
-const bodyParser = require('body-parser');
+var app = express();
+var url = process.env.URL || "mongodb://localhost:27017";
+var dbName = process.env.DBNAME || "test";
+var port = process.env.PORT || 8000;
 
-const app = express();
-const url = 'mongodb://localhost:27017';
-const dbName = 'test';
+app.engine('html', cons.pug);
+
+app.set('view engine', 'html');
+app.set('views',  __dirname +  '/views')
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-app.engine('html', cons.pug);
-app.set('view engine', 'html');
-app.set('views', __dirname + '/views')
+var routes = require("./routes");
 
-app.get('/', function (_req, res) {
-    app.db.collection('posts').find({}).sort({ date: -1 }).toArray(function (err, doc) {
-        res.render('home', { list: doc });
-    });
+MongoClient.connect(url, function(err, client) {
+  if(err) throw err;
+
+  routes(app);
+  
+  app.client = client;
+  app.db = client.db(dbName);
+
+  app.listen(port, function() {
+    console.log("now listening on http://localhost:" + port)
+  });
 });
 
-app.get('/create', function (req, res) {
-    res.render('create');
-})
-
-app.post('/create', function (req, res) {
-    app.db.collection('posts').insertOne({
-        title: req.body.title,
-        body: req.body.body,
-        author: req.body.author,
-        date: new Date()
-    }, function (err, _res) {
-        if (err) throw err;
-        console.log('post created successfully');
-        res.redirect('/');
-    });
-});
-
-app.get('/post/:id', function (req, res) {
-    try {
-        app.db.collection('posts').findOne({ _id: ObjectId(req.params.id) }, function (err, result) {
-            if (err) throw err;
-            if (result)
-                res.render('post', { post: result });
-            else
-                res.send('Post not found', 404);
-        });
-    } catch (_) {
-        res.send('Post not found', 404);
-    }
-});
-
-app.post('/post/:id', function (req, res) {
-    app.db.collection('posts').update({
-        _id: ObjectId(req.params.id)
-    },
-        {
-            $push: {
-                comments: {
-                    content: req.body.comment,
-                    date: new Date()
-                }
-            }
-        }, function (err, result) {
-            res.redirect(req.url);
-        });
-});
-
-app.get('*', function (req, res) {
-    res.send('Page not found', 404);
-});
-
-MongoClient.connect(url, {
-    useNewUrlParser: true
-}, function (err, client) {
-    app.client = client;
-    app.db = client.db(dbName);
-    app.listen(8000);
-    console.log("Express server started on 8000");
-});
+module.exports = app;
