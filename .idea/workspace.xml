@@ -2,40 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="36916d71-0f0b-420b-a7d5-32ac9a04509b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/simple-blog/.editorconfig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/simple-blog/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/simple-blog/angular.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/simple-blog/e2e/protractor.conf.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/simple-blog/e2e/src/app.e2e-spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/simple-blog/e2e/src/app.po.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/simple-blog/e2e/tsconfig.e2e.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/simple-blog/package-lock.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/simple-blog/package.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/simple-blog/src/app/app-routing.module.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/simple-blog/src/app/app.component.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/simple-blog/src/app/app.component.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/simple-blog/src/app/app.component.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/simple-blog/src/app/app.component.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/simple-blog/src/app/app.module.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/simple-blog/src/assets/.gitkeep" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/simple-blog/src/browserslist" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/simple-blog/src/environments/environment.prod.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/simple-blog/src/environments/environment.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/simple-blog/src/favicon.ico" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/simple-blog/src/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/simple-blog/src/karma.conf.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/simple-blog/src/main.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/simple-blog/src/polyfills.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/simple-blog/src/styles.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/simple-blog/src/test.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/simple-blog/src/tsconfig.app.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/simple-blog/src/tsconfig.spec.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/simple-blog/src/tslint.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/simple-blog/tsconfig.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/simple-blog/tslint.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/API/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/API/server.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/routes/simpleBlog.route.js" beforeDir="false" afterPath="$PROJECT_DIR$/API/routes/simpleBlog.route.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -52,8 +19,19 @@
         <entry file="file://$PROJECT_DIR$/TP-enonce-1.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor />
+              <first_editor relative-caret-position="828">
+                <caret line="36" selection-start-line="36" selection-end-line="36" />
+              </first_editor>
               <second_editor />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/API/config/data.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="207">
+              <caret line="9" column="31" lean-forward="true" selection-start-line="9" selection-start-column="31" selection-end-line="9" selection-end-column="31" />
             </state>
           </provider>
         </entry>
@@ -67,7 +45,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="230">
@@ -79,17 +57,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/API/server.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="308">
+            <state relative-caret-position="506">
               <caret line="22" column="16" selection-start-line="22" selection-start-column="16" selection-end-line="22" selection-end-column="16" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/API/routes/simpleBlog.route.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="17" lean-forward="true" selection-start-column="17" selection-end-column="17" />
+            <state relative-caret-position="92">
+              <caret line="4" column="23" selection-start-line="4" selection-start-column="23" selection-end-line="4" selection-end-column="23" />
             </state>
           </provider>
         </entry>
@@ -113,9 +91,10 @@
         <option value="$PROJECT_DIR$/API/.gitignore" />
         <option value="$PROJECT_DIR$/API/routes/simpleBlog.routes.js" />
         <option value="$PROJECT_DIR$/API/server.js" />
-        <option value="$PROJECT_DIR$/API/routes/simpleBlog.route.js" />
         <option value="$PROJECT_DIR$/simple-blog/.gitignore" />
         <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/API/config/data.json" />
+        <option value="$PROJECT_DIR$/API/routes/simpleBlog.route.js" />
       </list>
     </option>
   </component>
@@ -139,6 +118,17 @@
             <path>
               <item name="simple-blog" type="b2602c69:ProjectViewProjectNode" />
               <item name="simple-blog" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="simple-blog" type="b2602c69:ProjectViewProjectNode" />
+              <item name="simple-blog" type="462c0819:PsiDirectoryNode" />
+              <item name="API" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="simple-blog" type="b2602c69:ProjectViewProjectNode" />
+              <item name="simple-blog" type="462c0819:PsiDirectoryNode" />
+              <item name="API" type="462c0819:PsiDirectoryNode" />
+              <item name="config" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -182,12 +172,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1559737631351</updated>
-      <workItem from="1559737633198" duration="4951000" />
+      <workItem from="1559737633198" duration="6730000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="4951000" />
+    <option name="totallyTimeSpent" value="6730000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="0" width="974" height="1087" extended-state="0" />
@@ -195,11 +185,11 @@
     <layout>
       <window_info id="npm" side_tool="true" />
       <window_info id="Favorites" side_tool="true" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.26495728" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.26495728" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" />
-      <window_info anchor="bottom" id="Terminal" visible="true" weight="0.3297414" />
+      <window_info active="true" anchor="bottom" id="Terminal" visible="true" weight="0.3297414" />
       <window_info anchor="bottom" id="Event Log" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
@@ -217,32 +207,10 @@
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/TP-enonce-1.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor />
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/API/server.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="308">
-          <caret line="22" column="16" selection-start-line="22" selection-start-column="16" selection-end-line="22" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="276">
           <caret line="12" column="11" selection-start-line="12" selection-start-column="11" selection-end-line="12" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/API/routes/simpleBlog.route.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="17" lean-forward="true" selection-start-column="17" selection-end-column="17" />
         </state>
       </provider>
     </entry>
@@ -257,6 +225,37 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="230">
           <caret line="10" column="1" selection-start-line="10" selection-start-column="1" selection-end-line="10" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TP-enonce-1.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="828">
+            <caret line="36" selection-start-line="36" selection-end-line="36" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/API/config/data.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="207">
+          <caret line="9" column="31" lean-forward="true" selection-start-line="9" selection-start-column="31" selection-end-line="9" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/API/server.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="506">
+          <caret line="22" column="16" selection-start-line="22" selection-start-column="16" selection-end-line="22" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/API/routes/simpleBlog.route.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="92">
+          <caret line="4" column="23" selection-start-line="4" selection-start-column="23" selection-end-line="4" selection-end-column="23" />
         </state>
       </provider>
     </entry>
