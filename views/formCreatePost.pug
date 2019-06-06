@@ -4,4 +4,5 @@ form(action='/posts/'+ (typeof _id === "undefined" ? "" : _id), method='POST')
 			input#title.form-control(type='text', placeholder='Title' name='title' value=title)
 		textarea(id="theTextarea" placeholder="Content post" name="textArea")
 			| #{text}
+		input(type='text' name='tags' data-role="tagsinput" id="tags" class="form-control")
 	input(type="submit", value="submit")

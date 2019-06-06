@@ -4,18 +4,18 @@ import { read } from 'fs';
 const router = Router();
 
 router.get('/', async (req, res) => {
-  const posts = await req.context.models.Posts.find();
+  const posts = await req.context.models.Posts.find().populate('author tags').exec();
   return res.send(posts);
 });
 
 router.get('/createPost', async (req, res) => 
 {
-	res.render('posts');
+	res.render('posts').populate('author tags').exec();
 });
 
 router.get('/:postId', async (req, res) => 
 {
-	const post = await req.context.models.Posts.findById(req.params.postId,);
+	const post = await req.context.models.Posts.findById(req.params.postId,).populate('author tags').exec();
 
 	res.render('posts', post);
 });
@@ -34,16 +34,16 @@ router.post('/:postId?', async (req, res) =>
 	}
 	else
 	{
-		var updatePost = req.context.models.Posts.findById(req.params.postId, function(err, doc)
+		var updatePost = await req.context.models.Posts.findById(req.params.postId, function(err, doc)
 		{
 			doc.title = req.body.title;
 			doc.text = req.body.textArea;
 			doc.author = req.context.me.id;
 			doc.save();
 		});
-
-		post = await req.context.models.Posts.findById(req.params.postId);
 	}
+
+	post = await req.context.models.Posts.findById(req.params.postId).populate('author tags').exec();
 
 	res.render('posts', post);
 });
@@ -71,8 +71,8 @@ router.post('/:postId/createComment', async(req, res) => {
 		doc.save();
 	});
 
-	var post = await req.context.models.Posts.findById(req.params.postId);
-
+	var post = await req.context.models.Posts.findById(req.params.postId).populate('author tags').exec();
+	
 	res.render('posts', post);
 
 	
