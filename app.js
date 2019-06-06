@@ -48,7 +48,7 @@ app.use(async (req, res, next) => {
 
 // Authentication and Authorization Middleware
 var auth = function(req, res, next) {
-  if (req.session && req.session.user === "amy" && req.session.admin)
+  if (req.session && req.session.user === "rwieruch" && req.session.admin)
     return next();
   else
     return res.sendStatus(401);
@@ -59,36 +59,21 @@ app.get('/login', async function (req, res) {
 
 	var user;
 
-	if (!req.query.username)
+	if (req.query.username && req.query.password)
+	{
 		user = await models.Authors.findByLogin(req.query.username);
-	else
-	{
-		res.send('login failed !');
-	}
 
-	if (user == null)
-		res.send('login non exists');
-	else
-	{
-		if (req.query.password === "amyspassword")
+		if (user != null && req.query.password === "amyspassword")
 		{
 			req.session.user = req.query.username;
 			req.session.admin = true;
 			res.send("login success!");
 		}
+		else
+			res.send("login error");
 	}
-
-  /*if (!req.query.username || !req.query.password) {
-	  console.log(req.query.username);
-	  console.log(req.query.password);
-    res.send('login failed');    
-  } else if(req.query.username === "amy" && req.query.password === "amyspassword") {
-	console.log(req.query.username);
-	console.log(req.query.password);
-    req.session.user = "amy";
-    req.session.admin = true;
-    res.send("login success!");
-  }*/
+	else
+		res.send('login failed !');
 });
  
 // Logout endpoint
@@ -102,16 +87,12 @@ app.get('/content', auth, function (req, res) {
     res.send("You can only see this after you've logged in.");
 });
 
-
-
 // Routes
 app.use('/', routes.landing);
-app.use('/session', routes.session);
+app.use('/session', auth, routes.session);
 app.use('/authors', routes.authors);
 app.use('/posts', routes.posts);
 app.use('/tags', routes.tags);
-
-app.use('/bootstrap', routes.bootstrap);
 
 /// catch 404 and forwarding to error handler
 app.use(function(req, res, next) {
