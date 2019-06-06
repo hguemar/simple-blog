@@ -6,10 +6,17 @@ import 'dotenv/config';
 import bodyParser from 'body-parser';
 import cookieParser from 'cookie-parser';
 import express from 'express';
+import session from 'express-session';
 import cons from 'consolidate';
 import path from 'path';
 
 const app = express();
+
+app.use(session({
+	secret: '2C44-4D44-WppQ38S',
+	resave: true,
+	saveUninitialized: true
+}));
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -24,13 +31,77 @@ app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+
 app.use(async (req, res, next) => {
+	req.context = { models, };
+	next();
+  });
+
+/*app.use(async (req, res, next) => {
   req.context = {
     models,
 	me: await models.Authors.findByLogin('rwieruch'),
   };
   next();
+});*/
+
+
+// Authentication and Authorization Middleware
+var auth = function(req, res, next) {
+  if (req.session && req.session.user === "amy" && req.session.admin)
+    return next();
+  else
+    return res.sendStatus(401);
+};
+ 
+// Login endpoint
+app.get('/login', async function (req, res) {
+
+	var user;
+
+	if (!req.query.username)
+		user = await models.Authors.findByLogin(req.query.username);
+	else
+	{
+		res.send('login failed !');
+	}
+
+	if (user == null)
+		res.send('login non exists');
+	else
+	{
+		if (req.query.password === "amyspassword")
+		{
+			req.session.user = req.query.username;
+			req.session.admin = true;
+			res.send("login success!");
+		}
+	}
+
+  /*if (!req.query.username || !req.query.password) {
+	  console.log(req.query.username);
+	  console.log(req.query.password);
+    res.send('login failed');    
+  } else if(req.query.username === "amy" && req.query.password === "amyspassword") {
+	console.log(req.query.username);
+	console.log(req.query.password);
+    req.session.user = "amy";
+    req.session.admin = true;
+    res.send("login success!");
+  }*/
 });
+ 
+// Logout endpoint
+app.get('/logout', function (req, res) {
+  req.session.destroy();
+  res.send("logout success!");
+});
+ 
+// Get content endpoint
+app.get('/content', auth, function (req, res) {
+    res.send("You can only see this after you've logged in.");
+});
+
 
 
 // Routes
