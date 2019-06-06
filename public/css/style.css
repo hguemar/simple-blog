@@ -29,3 +29,8 @@ a {
 .comment {
 	margin-bottom: 1%;
 }
+
+.authorComment {
+	background-color: lightgrey;
+	width: auto;
+}

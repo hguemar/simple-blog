@@ -9,8 +9,7 @@ block content
 	hr
 
 	each comment in comments
-		div
-			p.authorComment= comment.author
-			p.textComment= comment.comment
-	
+		.comment
+			.authorComment= author.username + " : "
+			.textComment= comment.comment
 

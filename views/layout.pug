@@ -11,9 +11,16 @@ html(lang='fr')
 			link(rel='stylesheet', href='/css/style.css')
 		
 		link(href='/css/bootstrap.css', rel='stylesheet')
+		
+		
 
 	body
 		h1.main-title Simple blog
 		.container-fluid
 			include menu.pug
 			block content
+	
+	script(src='https://code.jquery.com/jquery-3.4.1.min.js')
+	link(href='/css/bootstrap-tagsinput.css', rel='stylesheet')
+	script(src='/js/bootstrap-tagsinput.js')
+	
