@@ -7,3 +7,7 @@
     align-items: center;
     justify-content: center;
 }
+
+#delete-button {
+    margin-bottom: 3em;
+}

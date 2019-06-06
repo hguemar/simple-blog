@@ -47,4 +47,12 @@ module.exports = function (app) {
         res.redirect(req.url);
       });
   });
-}
+
+  app.delete('/post/:id', function (req, res) {
+    app.db.collection('posts').deleteOne({
+      _id: ObjectId(req.params.id)
+    }, function (err, result) {
+      res.send('Post deleted');
+    });
+  });
+};
