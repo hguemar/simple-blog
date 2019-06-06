@@ -1,5 +1,6 @@
 html
     include head.pug
+    script(src='/static/script.js')
     body
         include menu.pug
         div(class="container")
@@ -9,6 +10,10 @@ html
             h5 Posted by #{post.author}
             h6 #{post.date}
             - var url = '/post/' + post._id
+
+            button(class="btn btn-danger" id="delete-button") Delete post
+                
+
             form(action=url method="POST")
                 div(class="form-group")
                     input(class="form-control" type="text" name="comment")
