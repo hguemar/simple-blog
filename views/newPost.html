@@ -1,0 +1,28 @@
+doctype html
+html(lang="en")
+  head
+    title New post
+    style
+      include style/w3blog.css
+      include style/custom.css
+  body(class='w3-light-grey')
+    div(class='w3-content')
+      header(class='w3-container w3-center w3-padding-32')
+        h1 Blongo
+      
+      // Menu
+      div(class='w3-bar w3-theme-d2 w3-left-align w3-large')
+        form(action='/', method='GET')
+          input(type="submit", value="Retour", class='w3-bar-item w3-indigo w3-hover-indigo w3-hover-deep-purple' cust-margin)
+      
+      // New post form
+      div(class='"w3-card-4 w3-margin w3-white w3-container')
+        h2 Nouveau post
+        form(action='/post/create', method='POST', class='cust-form w3-border-cyan')
+          label(for="author") Auteur
+          input(type="text", name="author", required)
+          label(for="title") Titre
+          input(type="text", name="title", required)
+          label(for="content") Contenu
+          textarea(name="content", required)
+          input(type="submit", value="Poster", required)
