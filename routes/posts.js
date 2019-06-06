@@ -22,7 +22,7 @@ module.exports = function(app) {
   });
 
   app.get("/post/:id", function(req, res) {
-
-    res.send("XXX");
+    res.render("article");
+    //res.send("XXX");
   });
 }
