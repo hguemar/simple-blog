@@ -11,7 +11,7 @@ module.exports = function(app) {
     });
 
     app.get("/ajoutBlog", function(req, res) {
-	  res.render("ajoutBlog", allPosts);
+	    res.render("ajoutBlog");
     });
 
   });
