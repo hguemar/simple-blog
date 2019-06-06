@@ -3,15 +3,16 @@ html
     body
         include menu.pug
         div(class="container")
-            h3 Create an article
-            form(method="post" action="/post/create")
-                div(class="form-group")
-                    label(for="title") Title
-                    input(class="form-control" type="text" name="title")
-                div(class="form-group")
-                    label(for="body") Content
-                    textarea(class="form-control" name="body")
-                div(class="form-group")
-                    label(for="author") Author
-                    input(class="form-control" type="text" name="author")
-                button(class="btn btn-primary" type="submit") Submit article
+            div(class="card")
+                h3 Create an article
+                form(method="post" action="/post/create")
+                    div(class="form-group")
+                        label(for="title") Title
+                        input(class="form-control" type="text" name="title")
+                    div(class="form-group")
+                        label(for="body") Content
+                        textarea(class="form-control" name="body" id="body-create-article")
+                    div(class="form-group")
+                        label(for="author") Author
+                        input(class="form-control" type="text" name="author")
+                    button(class="btn btn-primary" type="submit") Submit article
