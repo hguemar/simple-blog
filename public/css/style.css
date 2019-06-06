@@ -14,8 +14,18 @@ a {
 .menu {
   padding: 2%;
   background-color: lightgrey;
+  text-align: center;
 }
 
 .row {
   padding: 2%;
+}
+
+.main-title {
+  text-align: center;
+  margin : 2%;
+}
+
+.comment {
+	margin-bottom: 1%;
 }

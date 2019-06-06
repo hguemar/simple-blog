@@ -61,4 +61,21 @@ router.delete('/:postId', async (req, res) => {
   return res.send(result);
 });
 
+router.post('/:postId/createComment', async(req, res) => {
+
+	var updatePost = await req.context.models.Posts.findById(req.params.postId, function(err, doc)
+	{
+		var comment = {author: req.context.me.id,
+		comment: req.body.commentText};
+		doc.comments.push(comment);
+		doc.save();
+	});
+
+	var post = await req.context.models.Posts.findById(req.params.postId);
+
+	res.render('posts', post);
+
+	
+});
+
 export default router;

@@ -2,6 +2,15 @@ extends layout
 
 block content
 	
+	include formCreatePost.pug
+
+	include commentForm.pug
+
+	hr
+
+	each comment in comments
+		div
+			p.authorComment= comment.author
+			p.textComment= comment.comment
 	
 
-	include formCreatePost.pug

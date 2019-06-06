@@ -19,8 +19,7 @@ const postsSchema = new mongoose.Schema(
 	comments:
 	[{
 		author: { type: mongoose.Schema.Types.ObjectId, ref: 'Authors' },
-		email: { type: mongoose.Schema.Types.ObjectId, ref: 'Authors' },
-		comment: [{ type: String, }]
+		comment: { type: String }
 	}],
 	tags: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Tags' }],
 	author: { type: mongoose.Schema.Types.ObjectId, ref: 'Authors' },
