@@ -7,7 +7,8 @@ html(lang="en")
       
       p Liste des posts :
       ul
-      each val in posts
-        - var inputValue = val
-        p 
-            li #{val}
+      each val in articles
+        form(action='/post/'+val._id, method='get' )
+          - var inputValue = val.titre
+          p 
+            li Titre : #{inputValue} 
