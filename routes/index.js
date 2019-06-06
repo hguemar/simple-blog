@@ -1,4 +1,5 @@
 var posts = require("./posts");
+var maintenance = require("./maintenance");
 var ObjectID = require('mongodb').ObjectID;
 
 var postsPerPage = 2;
@@ -39,5 +40,6 @@ module.exports = function(app) {
 
   // Register posts endpoint
   posts(app);
+  maintenance(app);
 }
 
