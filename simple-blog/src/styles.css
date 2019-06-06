@@ -1,1 +1,33 @@
 /* You can add global styles to this file, and also import other style files */
+
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.blog-navbar-title {
+  font-family: Verdana, sans-serif;
+  color: white;
+  font-size: 2rem;
+  font-style: italic;
+  font-weight: bold;
+  flex: 1 1 auto;
+}
+
+.blog-centered-element {
+  display: flex;
+  justify-content: center;
+}
+
+.blog-position-absolute {
+  position: absolute;
+}
+
+.blog-position-relative {
+  position: relative;
+}
+
