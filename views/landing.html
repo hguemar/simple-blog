@@ -4,6 +4,10 @@ block css-page
 	link(rel='stylesheet', href='/css/style.css')
 
 block content
+
+	if (typeof author != null)
+		p= author
+
 	.row
 		each post in posts
 			.col-xl-4.col-lg-6.col-sm-12

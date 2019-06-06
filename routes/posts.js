@@ -1,10 +1,16 @@
 import { Router } from 'express';
+import { read } from 'fs';
 
 const router = Router();
 
 router.get('/', async (req, res) => {
   const posts = await req.context.models.Posts.find();
   return res.send(posts);
+});
+
+router.get('/createPost', async (req, res) => 
+{
+	res.render('posts');
 });
 
 router.get('/:postId', async (req, res) => 
@@ -14,14 +20,30 @@ router.get('/:postId', async (req, res) =>
 	res.render('posts', post);
 });
 
-router.post('/', async (req, res) => 
+router.post('/:postId?', async (req, res) => 
 {
-	const post = await req.context.models.Posts.create(
+	var post;
+	if (!req.params.postId)
+	{
+		post = await req.context.models.Posts.create(
+			{
+				title: req.body.title,
+				text: req.body.textArea,
+				author: req.context.me.id,
+			});
+	}
+	else
+	{
+		var updatePost = req.context.models.Posts.findById(req.params.postId, function(err, doc)
 		{
-			title: req.body.title,
-			text: req.body.textArea,
-			author: req.context.me.id,
+			doc.title = req.body.title;
+			doc.text = req.body.textArea;
+			doc.author = req.context.me.id;
+			doc.save();
 		});
+
+		post = await req.context.models.Posts.findById(req.params.postId);
+	}
 
 	res.render('posts', post);
 });
