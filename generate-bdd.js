@@ -1,5 +1,6 @@
 var MongoClient = require('mongodb').MongoClient;
 var url = 'mongodb://localhost:27017';
+var ut = require ('./utilities-generate.js');
 var dbName = 'blog';
 var theRandomDate;
 var theRandomTitle;
@@ -8,10 +9,11 @@ var theRandomResume;
 
 MongoClient.connect(url, function(err, client) {
     db = client.db(dbName);
-    theRandomTitle = makeString(5);
-    theRandomCorp = makeString(80);
-    theRandomResume = makeString(20);
-    theRandomDate = randomDate(new Date(2012, 0, 1), new Date());
+    console.log(ut);
+    theRandomTitle = ut.makeString(5);
+    theRandomCorp = ut.makeString(80);
+    theRandomResume = ut.makeString(20);
+    theRandomDate = ut.randomDate(new Date(2012, 0, 1), new Date());
     var myobj = { titre: theRandomTitle, corp: theRandomCorp, resume: theRandomResume, date: theRandomDate };
   
     db.collection("article").insertOne(myobj, function(err, res) {
@@ -25,16 +27,3 @@ MongoClient.connect(url, function(err, client) {
       });
   });
 
-  function makeString(length) {
-    var result           = '';
-    var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-    var charactersLength = characters.length;
-    for ( var i = 0; i < length; i++ ) {
-       result += characters.charAt(Math.floor(Math.random() * charactersLength));
-    }
-    return result;
- }
-
- function randomDate(start, end) {
-    return new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()));
-}

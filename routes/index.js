@@ -9,6 +9,10 @@ module.exports = function(app) {
     res.render("index", allPosts);
   });
 
+  app.get("/ajoutBlog", function(req, res) {
+    res.render("ajoutBlog", allPosts);
+  });
+
   // Register posts endpoint
   posts(app);
 }
