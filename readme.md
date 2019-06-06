@@ -9,3 +9,9 @@ Se placer dans le répertoire mongo.
 Se placer dans le répertoire et taper: `node server.js`
 
 Dans le navigateur : `http://localhost:8000`
+
+## Initialiser la base de données
+
+Dans le navigateur, visiter les pages :
+* `http://localhost:8000/empty`
+* `http://localhost:8000/populate`
