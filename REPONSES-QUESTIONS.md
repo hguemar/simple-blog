@@ -6,6 +6,7 @@ Notre BDD possède une collection "posts" qui contient les documents suivants :
 - body
 - author
 - date
+- comments (qui contient même "date" et "content")
 En guise d'ID unique, nous utilisons le champ "_id" que possèdent par défaut les documents MongoDB.
 
 ### Exemple d'entrée au format JSON
@@ -14,9 +15,14 @@ app.db.collection('posts').insertOne({
     title: req.body.title,
     body: req.body.body,
     author: req.body.author,
-    date: new Date()
+    date: new Date(),
+    comments: [{
+        content: req.body.comment.content,
+        date: new Date(),
+    }],
     }
 ```
+
 ### Écrire un script permettant de remplir la base avec des données générées aléatoirement
 Nous avons créé un script _populateMongo.js_ disponible à la racine du projet, qui rempli la BDD avec du contenu généré aléatoirement, à l'aide du package _casual_.
 
