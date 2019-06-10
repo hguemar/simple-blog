@@ -1,7 +1,9 @@
-<hr>
-p Commentaire :
+.post-container
+	p Commentaire :
 
-form(action=(typeof _id === "undefined" ? ''  : '/posts/'+_id+"/createComment"), method='POST')
-	.form-group
-		textarea(placeholder="Saisir votre commentaire ici..." name="commentText")
-	input(type="submit", value="Enregistrer commentaire", class="btn btn-primary")
+	form(action=(typeof _id === "undefined" ? ''  : '/posts/'+_id+"/createComment"), method='POST')
+		.form-group
+			.col-12
+				textarea(placeholder="Saisir votre commentaire ici..." name="commentText").comment-textarea
+		.col-8
+			input(type="submit", value="Enregistrer commentaire", class="btn btn-primary")

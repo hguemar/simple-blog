@@ -7,20 +7,26 @@ html(lang='fr')
 		meta(name='description', content='')
 		meta(name='author', content='')
 
-		block css-page
-			link(rel='stylesheet', href='/css/style.css')
+		
 		
 		link(href='/css/bootstrap.css', rel='stylesheet')
 		link(href='/css/bootstrap-tagsinput.css', rel='stylesheet')
+
+		block css-page
+			link(rel='stylesheet', href='/css/style.css')
 		
 		
 
-	body
-		h1.main-title Simple blog
-		.container-fluid
+	body.flex.column.scrollable
+		.header
+			.main-title-container
+				h1.main-title Simple blog
 			include menu.pug
-			block content
 
-		.footer
+		.container-fluid.content.flex
+			.col-12
+				block content
+
+		.footer.page-footer
 			p © DevOps Group 1 - 2019
 		include partials/scripts

@@ -11,17 +11,19 @@ block content
 	.row.justify-content-center
 		each post in posts
 			.col-xl-4.col-lg-6.col-xs-12
-				.postTitle
-					a(href="/posts/" + post._id) #{post.title}
-				|
-				| by 
-				|
-				a(href="/authors/" + post.author._id) #{post.author.username} 
-				| #{post.author.email}
-				p= post.text.substr(0, 30) + '...'
+				.post-container.row
+					.postTitle.col-12
+						a(href="/posts/" + post._id) #{post.title}
+					.post-content.col-12
+						p= post.text.substr(0, 100) + '...'
+					each tag in post.tags
+						.col-2
+							a(href="/tags/" + tag._id) #{tag.tag}
 
-				each tag in post.tags
-					span 
-					|
-					a(href="/tags/" + tag._id) #{tag.tag} 
-					|
+					.row.col-12
+						.post-author.col-12
+							a(href="/authors/" + post.author._id) #{post.author.username} 
+						.post-mail.col-12
+							p #{post.author.email}
+
+					
