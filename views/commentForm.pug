@@ -1,9 +1,13 @@
+if (typeof post._id !== 'undefined' && post._id != null)
 .post-container
 	p Commentaire :
 
-	form(action=(typeof _id === "undefined" ? ''  : '/posts/'+_id+"/createComment"), method='POST')
-		.form-group
+	include commentDisplay.pug
+
+	if (loggedIn == true)
+		form(action=(typeof post._id === "undefined" ? ''  : '/posts/' + post._id + "/createComment"), method='POST')
+			.form-group
 			.col-12
-				textarea(placeholder="Saisir votre commentaire ici..." name="commentText").comment-textarea
-		.col-8
-			input(type="submit", value="Enregistrer commentaire", class="btn btn-primary")
+				textarea(placeholder="Saisir votre commentaire ici..." name="commentText")
+			.col-8
+				input(type="submit", value="Enregistrer commentaire", class="btn btn-primary")
