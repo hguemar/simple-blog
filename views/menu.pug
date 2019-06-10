@@ -5,3 +5,10 @@ div.row.menu.justify-content-center
         a(href="/posts/createPost") Nouveau post
     .col-2
         a(href="/authors/") Mes posts
+
+if (author)
+    .filtre-content
+        p.filtre= "Article de "+author
+if (tag)
+    .filtre-content
+        p.filtre= "Article " + tag

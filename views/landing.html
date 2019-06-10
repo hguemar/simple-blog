@@ -4,12 +4,6 @@ block css-page
 	link(rel='stylesheet', href='/css/style.css')
 
 block content
-
-	if (author)
-		p.filtre= "Article de "+author
-	if (tag)
-		p.filtre= "Article " + tag
-
 	.row.justify-content-center
 		each post in posts
 			.col-xl-4.col-lg-6.col-xs-12
@@ -27,5 +21,3 @@ block content
 							a(href="/authors/" + post.author._id) #{post.author.username} 
 						.post-mail.col-12
 							p #{post.author.email}
-
-					
