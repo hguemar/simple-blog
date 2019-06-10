@@ -1,6 +1,7 @@
 extends layout
 
 block content
+
 	.row
 		if _id == null || editing
 			.post-container.col-12
@@ -24,4 +25,9 @@ block content
 						.authorComment= author.username + " : "
 						if comment.comment
 							.textComment= comment.comment
+
+	//include displayOrUpdatePost.pug
+
+	//include commentForm.pug
+
 
