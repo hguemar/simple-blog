@@ -1,7 +1,11 @@
-<hr>
-p Commentaire :
+if (typeof post._id !== 'undefined' && post._id != null)
+	<hr>
+	p Commentaire :
 
-form(action=(typeof _id === "undefined" ? ''  : '/posts/'+_id+"/createComment"), method='POST')
-	.form-group
-		textarea(placeholder="Saisir votre commentaire ici..." name="commentText")
-	input(type="submit", value="Enregistrer commentaire", class="btn btn-primary")
+	include commentDisplay.pug
+
+	if (loggedIn == true)
+		form(action=(typeof post._id === "undefined" ? ''  : '/posts/' + post._id + "/createComment"), method='POST')
+			.form-group
+				textarea(placeholder="Saisir votre commentaire ici..." name="commentText")
+			input(type="submit", value="Enregistrer commentaire", class="btn btn-primary")

@@ -1,4 +1,3 @@
-
 import models, { connectDb } from './models';
 import routes from './routes';
 
@@ -45,54 +44,13 @@ app.use(async (req, res, next) => {
   next();
 });*/
 
-
-// Authentication and Authorization Middleware
-var auth = function(req, res, next) {
-  if (req.session && req.session.user === "rwieruch" && req.session.admin)
-    return next();
-  else
-    return res.sendStatus(401);
-};
- 
-// Login endpoint
-app.get('/login', async function (req, res) {
-
-	var user;
-
-	if (req.query.username && req.query.password)
-	{
-		user = await models.Authors.findByLogin(req.query.username);
-
-		if (user != null && req.query.password === "amyspassword")
-		{
-			req.session.user = req.query.username;
-			req.session.admin = true;
-			res.send("login success!");
-		}
-		else
-			res.send("login error");
-	}
-	else
-		res.send('login failed !');
-});
- 
-// Logout endpoint
-app.get('/logout', function (req, res) {
-  req.session.destroy();
-  res.send("logout success!");
-});
- 
-// Get content endpoint
-app.get('/content', auth, function (req, res) {
-    res.send("You can only see this after you've logged in.");
-});
-
 // Routes
 app.use('/', routes.landing);
-app.use('/session', auth, routes.session);
+app.use('/session', routes.session);
 app.use('/authors', routes.authors);
 app.use('/posts', routes.posts);
 app.use('/tags', routes.tags);
+app.use('/auth', routes.auth);
 
 /// catch 404 and forwarding to error handler
 app.use(function(req, res, next) {

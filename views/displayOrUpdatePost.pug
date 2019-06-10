@@ -1,5 +1,5 @@
 if (loggedIn == true)
-	form(action='/posts/', method='POST')
+	form(action='/posts/'+ post._id, method='POST')
 		.form-group
 			label(for='title')
 				input#title.form-control(type='text', placeholder='Title' name='title' value=post.title)
@@ -8,4 +8,5 @@ if (loggedIn == true)
 			input(type='text' name='tags' data-role="tagsinput" id="tags" class="form-control")
 		input(type="submit", value="submit")
 else
-	p= 'You are not logged in !'
+	p= post
+	p= post.text

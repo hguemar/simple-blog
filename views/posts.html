@@ -2,14 +2,9 @@ extends layout
 
 block content
 	
-	include formCreatePost.pug
+
+	include displayOrUpdatePost.pug
 
 	include commentForm.pug
 
-	hr
-
-	each comment in comments
-		.comment
-			.authorComment= author.username + " : "
-			.textComment= comment.comment
 

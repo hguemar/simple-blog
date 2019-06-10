@@ -1,0 +1,5 @@
+if (typeof post.comments !== 'undefined' && post.comments.length >= 1)
+	each comment in post.comments
+		.comment
+			.authorComment= author.username + " : "
+			.textComment= comment.comment
