@@ -16,7 +16,7 @@ router.get('/:authorId', async (req, res) =>
 
 	console.log(author);
 	
-	res.render('landing', { posts: posts, author: author});
+	res.render('landing', { posts: posts, author: author.username});
 });
 
 export default router;

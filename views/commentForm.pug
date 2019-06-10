@@ -1,5 +1,5 @@
 if (typeof post._id !== 'undefined' && post._id != null)
-	<hr>
+.post-container
 	p Commentaire :
 
 	include commentDisplay.pug
@@ -7,5 +7,7 @@ if (typeof post._id !== 'undefined' && post._id != null)
 	if (loggedIn == true)
 		form(action=(typeof post._id === "undefined" ? ''  : '/posts/' + post._id + "/createComment"), method='POST')
 			.form-group
-				textarea(placeholder="Saisir votre commentaire ici..." name="commentText")
-			input(type="submit", value="Enregistrer commentaire", class="btn btn-primary")
+			  .col-12
+				  textarea(placeholder="Saisir votre commentaire ici..." name="commentText")
+		    .col-8
+			    input(type="submit", value="Enregistrer commentaire", class="btn btn-primary")

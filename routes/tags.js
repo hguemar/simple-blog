@@ -14,7 +14,7 @@ router.get('/:tagId', async (req, res) =>
 	// Get all posts
 	var posts = await req.context.models.Posts.find({ _id : { $in : tagsposts.posts}}).populate('author tags').exec();
 
-	res.render('landing', { posts: posts });
+	res.render('landing', { posts: posts, tag: tagsposts.tag });
 });
 
 router.post('/', async (req, res) => 
