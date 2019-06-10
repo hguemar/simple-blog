@@ -15,17 +15,15 @@ html(lang='fr')
 		block css-page
 			link(rel='stylesheet', href='/css/style.css')
 		
-		
-
 	body.flex.column.scrollable
 		.header
 			.main-title-container
-				h1.main-title Simple blog
-			include menu.pug
+		    .container-fluid
+			      include menu.pug
 
-		.container-fluid.content.flex
-			.col-12
-				block content
+        .container-fluid.content.flex
+          .col-12
+            block content
 
 		.footer.page-footer
 			p © DevOps Group 1 - 2019
