@@ -17,8 +17,8 @@ var loggedIn = function(req, res, next) {
 }
 
 router.get('/', async (req, res) => {
-  const posts = await req.context.models.Posts.find().populate('author tags').exec();
-  return res.send(posts);
+	const post = await req.context.models.Posts.find().populate('author tags').exec();
+	res.render('posts', { post: post, loggedIn: isLoggedIn(req) });
 });
 
 // Get a post without logged in
@@ -38,15 +38,15 @@ router.get('/:postId', async (req, res) =>
 
 router.get('/createPost', loggedIn, async (req, res) => 
 {
-	res.render('newPost');
+	res.render('newPost', { post: post, loggedIn: loggedIn });
 });
 
-router.get('/:postId', async (req, res) => 
+/*router.get('/:postId', async (req, res) => 
 {
 	const post = await req.context.models.Posts.findById(req.params.postId,).populate('author tags').exec();
 
 	res.render('posts', { post: post, loggedIn: loggedIn });
-});
+});*/
 
 router.post('/:postId?', loggedIn, async (req, res) => 
 {

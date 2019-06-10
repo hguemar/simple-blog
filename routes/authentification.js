@@ -3,11 +3,9 @@ import session from 'express-session';
 
 const router = Router();
 
-
-
 // Authentication and Authorization Middleware
 var auth = function(req, res, next) {
-	if (req.session && req.session.user === "rwieruch" && req.session.admin)
+	if (req.session && req.session.user == "rwieruch" && req.session.admin)
 	  return next();
 	else
 	  return res.sendStatus(401);
@@ -26,7 +24,7 @@ router.get('/login', async function (req, res) {
 	{
 		user = await req.context.models.Authors.findByLogin(req.query.username);
 
-		if (user != null && req.query.password === "amyspassword")
+		if (user != null && req.query.password == "amyspassword")
 		{
 			req.session.user = req.query.username;
 			req.session.admin = true;
@@ -49,6 +47,6 @@ router.get('/content', auth, function (req, res) {
 router.get('/logout', function (req, res) {
 	req.session.destroy();
 	res.send("logout success!");
-  });
+});
 
 export default router;
