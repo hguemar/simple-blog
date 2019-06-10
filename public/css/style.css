@@ -98,3 +98,9 @@ a {
 	width: 100%;
 	flex: 1;
 }
+
+.filtre {
+	text-align: center;
+	font-size: 28px;
+	color: lightgray;
+}

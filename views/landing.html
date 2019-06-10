@@ -5,8 +5,10 @@ block css-page
 
 block content
 
-	if (typeof author != null)
-		p= author
+	if (author)
+		p.filtre= "Article de "+author
+	if (tag)
+		p.filtre= "Article " + tag
 
 	.row.justify-content-center
 		each post in posts
