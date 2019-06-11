@@ -2,32 +2,8 @@ extends layout
 
 block content
 
-	.row
-		if _id == null || editing
-			.post-container.col-12
-				include formCreatePost.pug
-		else
-			.post-container.col-12
-				p= title
-				p= text
-				p= author.username
-				.row
-					each tag in tags
-						.col-sm-1.col-3
-							a(href="/tags/" + tag._id) #{tag.tag}
-			.col-md-6.col-12
-				include commentForm.pug
+	include displayOrUpdatePost.pug
 
-			hr
-			if comments
-				each comment in comments
-					.comment.post-container
-						.authorComment= author.username + " : "
-						if comment.comment
-							.textComment= comment.comment
-
-	//include displayOrUpdatePost.pug
-
-	//include commentForm.pug
+	include commentForm.pug
 
 

@@ -1,7 +1,9 @@
-import { Router } from 'express';
-import session from 'express-session';
+var express = require('express');
+var session = require('express-session');
+var router = express.Router();
+//import session from 'express-session';
 
-const router = Router();
+//const router = Router();
 
 // Authentication and Authorization Middleware
 var auth = function(req, res, next) {
@@ -57,4 +59,4 @@ router.get('/logout', function (req, res) {
 	res.send("logout success!");
 });
 
-export default router;
+module.exports = router;

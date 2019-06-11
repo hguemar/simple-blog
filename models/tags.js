@@ -1,4 +1,4 @@
-import mongoose from 'mongoose';
+const mongoose = require('mongoose');
 
 const tagsSchema = new mongoose.Schema(
 {
@@ -23,4 +23,4 @@ tagsSchema.pre('remove', function(next)
 
 const Tags = mongoose.model('Tags', tagsSchema);
 
-export default Tags;
+module.exports = Tags;

@@ -1,4 +1,4 @@
-import mongoose from 'mongoose';
+const mongoose = require('mongoose');
 
 const authorsSchema = new mongoose.Schema(
 {
@@ -34,4 +34,4 @@ authorsSchema.pre('remove', function(next)
 
 const Authors = mongoose.model('Authors', authorsSchema);
 
-export default Authors;
+module.exports = Authors;

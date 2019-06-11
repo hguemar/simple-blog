@@ -1,13 +1,21 @@
-import models, { connectDb } from './models';
-import routes from './routes';
+//const { connectDb } = require('./models');
+const models = require('./models');
+const routes = require('./routes');
 
-import 'dotenv/config';
-import bodyParser from 'body-parser';
-import cookieParser from 'cookie-parser';
-import express from 'express';
-import session from 'express-session';
-import cons from 'consolidate';
-import path from 'path';
+//const config = require('dotenv/config');
+//require('dotenv').config()
+//import 'dotenv/config';
+
+const bodyParser = require('body-parser');
+
+//import cookieParser from 'cookie-parser';
+const cookieParser = require('cookie-parser');
+
+
+const express = require('express');
+const session = require('express-session');
+const cons = require('consolidate');
+const path = require('path');
 
 const app = express();
 
@@ -85,7 +93,7 @@ app.use(function(err, req, res, next) {
 
 
 // Start
-const eraseDatabaseOnSync = true;
+/*const eraseDatabaseOnSync = true;
 
 connectDb().then(async () => {
   if (eraseDatabaseOnSync) {
@@ -198,6 +206,6 @@ const createUsersWithMessages = async () => {
   await author1.save();
   await author2.save();
   await author3.save();
-};
+};*/
 
 module.exports = app;
