@@ -19,4 +19,4 @@ router.get('/:authorId', async (req, res) =>
 	res.render('landing', { posts: posts, author: author.username});
 });
 
-export default router;
+module.exports = router;

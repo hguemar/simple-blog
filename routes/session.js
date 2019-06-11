@@ -1,6 +1,5 @@
-import { Router } from 'express';
-
-const router = Router();
+var express = require('express');
+var router = express.Router();
 
 router.get('/', async (req, res) => {
 	const author = await req.context.models.Authors.findByLogin(req.session.user,);
@@ -14,4 +13,4 @@ router.get('/', async (req, res) => {
 		return res.send(401);
 });
 
-export default router;
+module.exports = router;

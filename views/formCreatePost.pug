@@ -5,7 +5,7 @@ if (loggedIn == true)
 			label(for='title')
 				input#title.form-control(type='text', placeholder='Title' name='title' value=post.title)
 			.col-8
-				textarea(id="theTextarea" placeholder="Content post" name="textArea" cols="200")
+				textarea(id="theTextarea" placeholder='Content post' name='textArea' cols="200")=post.text
 			.col-3
 				input(type='text' name='tags' data-role="tagsinput" id="tags" class="form-control")
 			.col-3

@@ -3,14 +3,10 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "start": "nodemon --exec babel-node ./bin/www",
-    "test": "mocha --exec babel-node ./test/api_test"
+    "start": "nodemon ./bin/www",
+    "test": "mocha ./test/api_test"
   },
   "dependencies": {
-    "@babel/core": "^7.4.5",
-    "@babel/node": "^7.4.5",
-    "@babel/preset-env": "^7.4.5",
-    "@babel/register": "^7.4.4",
     "body-parser": "^1.19.0",
     "consolidate": "^0.15.1",
     "cookie-parser": "^1.4.4",

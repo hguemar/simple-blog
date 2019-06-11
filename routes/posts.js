@@ -1,6 +1,5 @@
-import { Router } from 'express';
-
-const router = Router();
+var express = require('express');
+var router = express.Router();
 
 function isLoggedIn(req) {
 	if (typeof req.session.user != 'undefined')
@@ -50,6 +49,7 @@ router.get('/createPost', loggedIn, async (req, res) =>
 
 router.post('/:postId?', loggedIn, async (req, res) => 
 {
+	
 	var post;
 	if (!req.params.postId)
 	{
@@ -62,9 +62,6 @@ router.post('/:postId?', loggedIn, async (req, res) =>
 	}
 	else
 	{
-		console.log(req.session);
-		console.log(req.session.user);
-
 		if (req.session.user != 'undefined')
 		{
 			var updatePost = await req.context.models.Posts.findById(req.params.postId, function(err, doc)
@@ -120,4 +117,4 @@ router.post('/:postId/createComment', async(req, res) => {
 		res.redirect('/session');	
 });
 
-export default router;
+module.exports = router;
