@@ -16,17 +16,26 @@ router.get('/', auth, (req, res) => {
 });
 
 // Login endpoint
-router.get('/login', async function (req, res) {
+router.get('/login', function (req, res) {
+	res.render('login');
+});
+
+ // Login endpoint
+router.post('/login', async function (req, res) {
 
 	var user;
 
-	if (req.query.username && req.query.password)
-	{
-		user = await req.context.models.Authors.findByLogin(req.query.username);
+	console.log(req.body.username);
+	console.log(req.body.password);
+	console.log(req);
 
-		if (user != null && req.query.password == "amyspassword")
+	if (req.body.username && req.body.password)
+	{
+		user = await req.context.models.Authors.findByLogin(req.body.username);
+
+		if (user != null && req.body.password == "admin")
 		{
-			req.session.user = req.query.username;
+			req.session.user = req.body.username;
 			req.session.admin = true;
 			res.send("login success!");
 		}
@@ -36,7 +45,6 @@ router.get('/login', async function (req, res) {
 	else
 		res.send('login failed !');
 });
- 
 
 // Get content endpoint
 router.get('/content', auth, function (req, res) {
