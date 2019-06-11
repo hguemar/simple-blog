@@ -110,6 +110,11 @@ const createUsersWithMessages = async () => {
     username: 'ddavids',
     email: 'tata@toto.com',
   });
+
+  const author3 = new models.Authors({
+    username: 'admin',
+    email: 'admin@localhost',
+  });
   
   const tag1 = new models.Tags({ tag : 'tag1'});
   const tag2 = new models.Tags({ tag : 'tag2'});
@@ -192,6 +197,7 @@ const createUsersWithMessages = async () => {
 
   await author1.save();
   await author2.save();
+  await author3.save();
 };
 
 module.exports = app;
