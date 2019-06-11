@@ -1,14 +1,17 @@
 div.row.menu.justify-content-center
-    .col-2
-        a(href="/") Accueil
-    .col-2
-        a(href="/posts/createPost") Nouveau post
-    .col-2
-        a(href="/authors/") Mes posts
+	.col-2
+		a(href="/") Accueil
+	.col-2
+		a(href="/posts/createPost") Nouveau post
+	.col-2
+		a(href="/authors/") Mes posts
+	if req && req.session
+		.col-2
+			p= "Connecté en tant que " + req.session.user
 
 if (author)
-    .filtre-content
-        p.filtre= "Article de "+author
+	.filtre-content
+		p.filtre= "Article de "+author
 if (tag)
-    .filtre-content
-        p.filtre= "Article " + tag
+	.filtre-content
+		p.filtre= "Article " + tag
