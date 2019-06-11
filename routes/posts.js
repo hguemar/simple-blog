@@ -25,22 +25,34 @@ router.get('/:postId?', async (req, res) =>
 	{
 		var posts;
 		if (typeof req.params.postId == 'undefined')
-			posts = await req.context.models.Posts.find({}).populate('author tags').exec();
+			posts = await req.context.models.Posts.find({}).populate('author tags comments.author').exec();
 		else
-			posts = await req.context.models.Posts.findById(req.params.postId).populate('author tags').exec();
+			posts = await req.context.models.Posts.findById(req.params.postId).populate('author tags comments.author').exec();
 
-		res.render('posts', { posts: posts, loggedIn: isLoggedIn(req) });
+		console.log(posts.comments);
+
+		var autoriseModif = false;
+		if (posts.author.username == req.session.user)
+			autoriseModif = true;
+
+		res.render('posts', { posts: posts, loggedIn: isLoggedIn(req), autoriseModif: autoriseModif, userID: req.session.userID });
 	}
 
 });
 
 // Get a post without logged in
-router.get('/:postId', async (req, res) => 
+/*router.get('/:postId', async (req, res) => 
 {
 	const posts = await req.context.models.Posts.findById(req.params.postId,).populate('author tags').exec();
 
-	res.render('posts', { posts: posts, loggedIn: isLoggedIn(req) });
-});
+	console.log(posts);
+
+	var autoriseModif = false;
+	if (posts.author.username == req.session.user)
+		autoriseModif = true;
+
+	res.render('posts', { posts: posts, loggedIn: isLoggedIn(req), autoriseModif: autoriseModif });
+});*/
 
 
 ///////////////////////////////////////////
@@ -64,6 +76,7 @@ router.get('/createPost', loggedIn, async (req, res) =>
 router.post('/:postId?', loggedIn, async (req, res) => 
 {
 	var post;
+	// Creation post
 	if (!req.params.postId)
 	{
 		var tags = req.body.tags.split(",");
@@ -92,9 +105,15 @@ router.post('/:postId?', loggedIn, async (req, res) =>
 		}
 
 		post.save();
+
+		// Ajout au posts de l'author
+		var author = await req.context.models.Authors.findById(req.session.userID);
+		author.posts.push(post.id);
+		author.save();
 	}
 	else
 	{
+		// Modif post
 		var tags = req.body.tags.split(",");
 
 		for (var i = 0, len = tags.length; i < len; i++) 
@@ -104,9 +123,6 @@ router.post('/:postId?', loggedIn, async (req, res) =>
 
 			tags[i] = await req.context.models.Tags.getTagID(tags[i]);
 		}
-
-		var tags_string = tags.map(String);
-		console.log(tags_string);
 
 		if (req.session.user != 'undefined')
 		{
@@ -130,9 +146,9 @@ router.post('/:postId?', loggedIn, async (req, res) =>
 		updatePost.save();
 	}
 
-	post = await req.context.models.Posts.findById(req.params.postId).populate('author tags').exec();
+	//posts = await req.context.models.Posts.findById(req.params.postId).populate('author tags').exec();
 
-	res.render('posts', post);
+	res.redirect('/');
 });
 
 router.delete('/:postId', async (req, res) => {
@@ -158,7 +174,7 @@ router.post('/:postId/createComment', async(req, res) => {
 		{
 			var comment = 
 			{
-				author: req.session.user,
+				author: req.session.userID,
 				comment: req.body.commentText
 			};
 			doc.comments.push(comment);
@@ -167,7 +183,7 @@ router.post('/:postId/createComment', async(req, res) => {
 	
 		var post = await req.context.models.Posts.findById(req.params.postId).populate('author tags').exec();
 		
-		res.render('posts', post);
+		res.redirect('/posts/'+ req.params.postId);
 	}
 	else
 		res.redirect('/session');	

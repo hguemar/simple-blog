@@ -3,7 +3,7 @@ extends layout
 block content
 
 	.row
-		if (loggedIn == true)
+		if (loggedIn == true && autoriseModif)
 			form(action='/posts/'+ posts._id, method='POST')
 				.form-group
 					label(for='title')
@@ -60,7 +60,7 @@ block content
 							if (typeof posts.comments !== 'undefined' && posts.comments.length >= 1)
 								each comment in posts.comments
 									.comment.post-container
-										.authorComment= author.username + " : "
+										.authorComment= comment.author.username + " : "
 										.textComment= comment.comment
 
 							if (loggedIn == true)
@@ -75,7 +75,7 @@ block content
 				if comments
 					each comment in comments
 						.comment.post-container
-							.authorComment= author.username + " : "
+							.authorComment= comment.author.username + " : "
 							if comment.comment
 								.textComment= comment.comment
 
