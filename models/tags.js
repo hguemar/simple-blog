@@ -9,6 +9,16 @@ const tagsSchema = new mongoose.Schema(
 	posts: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Posts' }],
 });
 
+tagsSchema.statics.getTagID = async function(mot) 
+{
+	let tag = await this.findOne({ tag: mot });
+
+	if (tag != null)
+		return tag._id;
+	else
+		return null;
+};
+
 tagsSchema.statics.findByTag = async function(mot) 
 {
 	let tag = await this.findOne({ tag: mot, });

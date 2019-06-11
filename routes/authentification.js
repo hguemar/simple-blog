@@ -38,6 +38,7 @@ router.post('/login', async function (req, res) {
 		if (user != null && req.body.password == "admin")
 		{
 			req.session.user = req.body.username;
+			req.session.userID = user._id;
 			req.session.admin = true;
 			//res.send("login success!");
 			res.redirect('/');
