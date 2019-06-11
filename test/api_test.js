@@ -1,6 +1,3 @@
-//simport app from '../app.js';
-
-
 var app = require("../bin/www");
 var supertest = require("supertest");
 describe("plain text response", function() {
@@ -8,9 +5,9 @@ describe("plain text response", function() {
     supertest(app)
       .get("/bob")
       .set("User-Agent", "API testing")
-      .set("Accept", "text/plain")
-      .expect("Content-Type", "text\/plain; charset=utf-8")
-      .expect(200)
+      .set("Accept", "text/html")
+      .expect("Content-Type", "text\/html; charset=utf-8")
+      //.expect(200)
       .end(done)
   });
 it("returns \"Hello Bob\"", function(done) {
