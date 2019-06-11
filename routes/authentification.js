@@ -39,7 +39,8 @@ router.post('/login', async function (req, res) {
 		{
 			req.session.user = req.body.username;
 			req.session.admin = true;
-			res.send("login success!");
+			//res.send("login success!");
+			res.redirect('/');
 		}
 		else
 			res.send("login error");
