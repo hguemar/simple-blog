@@ -5,24 +5,28 @@ module.exports = function(app) {
   });
 
   app.post("/post/create", function(req, res) {
-    console.log(req.body);
-    
-    theTitle = req.body.titre;
-    theCorps = req.body.corps;
-    theResume = req.body.resume;
-    theDate = req.body.date;
-    var myobj = { titre: theTitle, corp: theCorps, resume: theResume, date: theDate };
+
+    var myobj = { title: req.body.titre, body: req.body.corps, summary: req.body.resume, date: req.body.date };
   
     app.db.collection("article").insertOne(myobj, function(err, res) {
       if (err) throw err;
-      
     });
-    res.send("Vous avez réussi l'insertion");
+    res.render("insertConfirmation");
     console.log(myobj);
   });
 
   app.get("/post/:id", function(req, res) {
-    res.render("article");
-    //res.send("XXX");
+    var ObjectId = require("mongodb").ObjectID;
+    app.db.collection("article").find({ _id: ObjectId(req.params.id) }).toArray(function(err, result) {
+      if (err) throw err;
+      console.log({'articleDetail': result});
+      res.render("article", {'articleDetail': result});
+    });
+  });
+
+  app.get("/delete/:id", function(req, res) {
+    var ObjectId = require("mongodb").ObjectID;
+    app.db.collection("article").remove({ _id: ObjectId(req.params.id) });
+    res.render("deleteConfirmation");
   });
 }

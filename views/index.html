@@ -3,12 +3,13 @@ html(lang="en")
   head
     title Blog
   body
-      a(class='button' href='/ajoutBlog') test
+      a(class='button' href='/new') Ajouter un article
       
-      p Liste des posts :
+      p Liste des articles :
       ul
       each val in articles
-        form(action='/post/'+val._id, method='get' )
-          - var inputValue = val.titre
-          p 
-            li Titre : #{inputValue} 
+        - var inputValue = val.title
+        p 
+          li Titre : #{inputValue} 
+            a(href='/post/'+val._id) Consulter l'article
+            a(href='/delete/'+val._id) Supprimer l'article
