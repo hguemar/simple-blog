@@ -18,6 +18,15 @@ const authorsSchema = new mongoose.Schema(
 	posts: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Posts' }],
 });
 
+authorsSchema.statics.getIDByLogin = async function(login) 
+{
+	let author = await this.findOne({ username: login, });
+
+	if (!author) { author = await this.findOne({ email: login }); }
+
+	return author._id;
+};
+
 authorsSchema.statics.findByLogin = async function(login) 
 {
 	let author = await this.findOne({ username: login, });

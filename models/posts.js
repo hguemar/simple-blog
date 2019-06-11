@@ -1,6 +1,6 @@
-const mongoose = require('mongoose');
+var mongoose = require('mongoose');
 
-const postsSchema = new mongoose.Schema(
+let postsSchema = new mongoose.Schema(
 {
 	title:
 	{
@@ -25,6 +25,6 @@ const postsSchema = new mongoose.Schema(
 	author: { type: mongoose.Schema.Types.ObjectId, ref: 'Authors' },
 });
 
-const Posts = mongoose.model('Posts', postsSchema);
+let Posts = mongoose.model('Posts', postsSchema);
 
 module.exports = Posts;
