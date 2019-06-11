@@ -42,7 +42,7 @@ a {
 }
 
 .main-title-container {
-	background:#1d1d2ebe;
+	background:#1d1d2ee0;
 	padding : 1%;
 }
 
@@ -61,7 +61,7 @@ a {
 /* Post */
 
 .post-container {
-	background-color: rgba(211, 211, 211, 0.856);
+	background-color: rgba(211, 211, 211, 0.9);
 	margin: 10px;
 	padding: 20px;
 }
@@ -69,38 +69,47 @@ a {
 .menu {
 	font-size: 24px;
 	font-weight: bold;
-	background-color: lightgrey;
+	background-color: rgba(211, 211, 211, 0.9);
 	text-align: center;
 }
 
 .footer {
     width: 100%;
     height: 50px;
-    background-color: lightgrey;
+    background-color: rgba(211, 211, 211, 0.9);
 	text-align: center;
 	font-size: 24px;
-}
-
-/* TEST */
-
-.flex{
-  display:flex;
-}
-.flex.column {
-  flex-direction: column
-}
-
-.scrollable{
-  height: 100vh;
-}
-
-.content{
-	width: 100%;
-	flex: 1;
+	position:fixed;
+	bottom: 0;
 }
 
 .filtre {
 	text-align: center;
 	font-size: 28px;
 	color: lightgray;
+}
+
+.header {
+	top: 0;
+	position:fixed;
+	width: 100%;
+	z-index: 150;
+}
+
+.margin-top {
+	/*margin-top:250px;*/
+}
+
+.filtre-content {
+	position: relative;
+	bottom:0;
+	left:0;
+	background:  #1d1d2ed5;
+	z-index: 150;
+}
+
+.content {
+	position: relative; 
+	top:210px;
+	margin-bottom: 300px;
 }
