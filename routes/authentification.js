@@ -1,9 +1,6 @@
 var express = require('express');
 var session = require('express-session');
 var router = express.Router();
-//import session from 'express-session';
-
-//const router = Router();
 
 // Authentication and Authorization Middleware
 var auth = function(req, res, next) {
@@ -26,11 +23,6 @@ router.get('/login', function (req, res) {
 router.post('/login', async function (req, res) {
 
 	var user;
-
-	console.log(req.body.username);
-	console.log(req.body.password);
-	console.log(req);
-
 	if (req.body.username && req.body.password)
 	{
 		user = await req.context.models.Authors.findByLogin(req.body.username);
@@ -58,7 +50,8 @@ router.get('/content', auth, function (req, res) {
 // Logout endpoint
 router.get('/logout', function (req, res) {
 	req.session.destroy();
-	res.send("logout success!");
+	//res.send("logout success!");
+	res.redirect('/');
 });
 
 module.exports = router;
