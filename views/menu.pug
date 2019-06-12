@@ -5,11 +5,11 @@ div.row.menu.justify-content-center
 		a(href="/posts/createPost") Nouveau post
 
 	
-	if(userID)
+	if (userID)
 		.col-2
 			a(href="/authors/" + userID) Mes posts
 	.col-2
-		if(userID)
+		if (userID)
 			a(href="/auth/logout") Logout
 		else
 			a(href="/auth/login") Login
