@@ -15,18 +15,44 @@ var loggedIn = function(req, res, next) {
 	  return res.sendStatus(401);
 }
 
-router.get('/', async (req, res) => {
-	const post = await req.context.models.Posts.find().populate('author tags').exec();
-	res.render('posts', { post: post, loggedIn: isLoggedIn(req) });
+router.get('/:postId?', async (req, res) => 
+{
+	if (req.params.postId == 'createPost')
+	{
+		res.render('newPost', { loggedIn: isLoggedIn(req) });
+	}
+	else
+	{
+		var posts;
+		if (typeof req.params.postId == 'undefined')
+			posts = await req.context.models.Posts.find({}).populate('author tags comments.author').exec();
+		else
+			posts = await req.context.models.Posts.findById(req.params.postId).populate('author tags comments.author').exec();
+
+		console.log(posts.comments);
+
+		var autoriseModif = false;
+		if (posts.author.username == req.session.user)
+			autoriseModif = true;
+
+		res.render('posts', { posts: posts, loggedIn: isLoggedIn(req), autoriseModif: autoriseModif, userID: req.session.userID });
+	}
+
 });
 
 // Get a post without logged in
-router.get('/:postId', async (req, res) => 
+/*router.get('/:postId', async (req, res) => 
 {
-	const post = await req.context.models.Posts.findById(req.params.postId,).populate('author tags').exec();
+	const posts = await req.context.models.Posts.findById(req.params.postId,).populate('author tags').exec();
 
-	res.render('posts', { post: post, loggedIn: isLoggedIn(req) });
-});
+	console.log(posts);
+
+	var autoriseModif = false;
+	if (posts.author.username == req.session.user)
+		autoriseModif = true;
+
+	res.render('posts', { posts: posts, loggedIn: isLoggedIn(req), autoriseModif: autoriseModif });
+});*/
 
 
 ///////////////////////////////////////////
@@ -37,7 +63,7 @@ router.get('/:postId', async (req, res) =>
 
 router.get('/createPost', loggedIn, async (req, res) => 
 {
-	res.render('newPost', { post: post, loggedIn: loggedIn });
+	res.render('newPost');
 });
 
 /*router.get('/:postId', async (req, res) => 
@@ -49,34 +75,80 @@ router.get('/createPost', loggedIn, async (req, res) =>
 
 router.post('/:postId?', loggedIn, async (req, res) => 
 {
-	
 	var post;
+	// Creation post
 	if (!req.params.postId)
 	{
+		var tags = req.body.tags.split(",");
+
+		for (var i = 0, len = tags.length; i < len; i++) 
+		{
+			if (await req.context.models.Tags.getTagID(tags[i]) == null)
+				await req.context.models.Tags.create({tag: tags[i]});
+
+			tags[i] = await req.context.models.Tags.getTagID(tags[i]);
+		}
+
 		post = await req.context.models.Posts.create(
 			{
 				title: req.body.title,
 				text: req.body.textArea,
-				author: req.session.user,
+				author: req.session.userID
 			});
+		
+		for (var i = 0, len = tags.length; i < len; i++) 
+		{
+			var tag = await req.context.models.Tags.findById(tags[i]);
+			post.tags.push(tags[i]);
+			tag.posts.push(post.id);
+			tag.save();
+		}
+
+		post.save();
+
+		// Ajout au posts de l'author
+		var author = await req.context.models.Authors.findById(req.session.userID);
+		author.posts.push(post.id);
+		author.save();
 	}
 	else
 	{
+		// Modif post
+		var tags = req.body.tags.split(",");
+
+		for (var i = 0, len = tags.length; i < len; i++) 
+		{
+			if (await req.context.models.Tags.getTagID(tags[i]) == null)
+				await req.context.models.Tags.create({tag: tags[i]});
+
+			tags[i] = await req.context.models.Tags.getTagID(tags[i]);
+		}
+
 		if (req.session.user != 'undefined')
 		{
 			var updatePost = await req.context.models.Posts.findById(req.params.postId, function(err, doc)
 			{
 				doc.title = req.body.title;
 				doc.text = req.body.textArea;
-				doc.author = req.session.user;
+				doc.author = req.session.userID;
 				doc.save();
 			});
 		}
+
+		for (var i = 0, len = tags.length; i < len; i++) 
+		{
+			var tag = await req.context.models.Tags.findById(tags[i]);
+			updatePost.tags.push(tags[i]);
+			tag.posts.push(updatePost.id);
+			tag.save();
+		}
+
+		updatePost.save();
 	}
 
-	post = await req.context.models.Posts.findById(req.params.postId).populate('author tags').exec();
+	//posts = await req.context.models.Posts.findById(req.params.postId).populate('author tags').exec();
 
-	res.render('posts', post);
+	res.redirect('/');
 });
 
 router.delete('/:postId', async (req, res) => {
@@ -102,7 +174,7 @@ router.post('/:postId/createComment', async(req, res) => {
 		{
 			var comment = 
 			{
-				author: req.session.user,
+				author: req.session.userID,
 				comment: req.body.commentText
 			};
 			doc.comments.push(comment);
@@ -111,7 +183,7 @@ router.post('/:postId/createComment', async(req, res) => {
 	
 		var post = await req.context.models.Posts.findById(req.params.postId).populate('author tags').exec();
 		
-		res.render('posts', post);
+		res.redirect('/posts/'+ req.params.postId);
 	}
 	else
 		res.redirect('/session');	

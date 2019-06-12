@@ -2,8 +2,81 @@ extends layout
 
 block content
 
-	include displayOrUpdatePost.pug
+	.row
+		if (loggedIn == true && autoriseModif)
+			form(action='/posts/'+ posts._id, method='POST')
+				.form-group
+					label(for='title')
+						input#title.form-control(type='text', placeholder='Title' name='title' value=posts.title)
+					textarea(id="theTextarea" placeholder="Content post" name="textArea")
+						| #{posts.text}
+					input(type='text' name='tags' data-role="tagsinput" id="tags" class="form-control")
+				input(type="submit", value="submit")
+		else
+			if (posts != null)
+				if (posts.length > 1)
+					.row
+						each post in posts
+							.post-container.col-12
+								p= post.title
+								p= post.text
+								p= post.author.username
+								.row
+									each tag in post.tags
+										.col-sm-1.col-3
+											a(href="/tags/" + tag._id) #{tag.tag}
+							.col-md-6.col-12
+								if (typeof post._id !== 'undefined' && post._id != null && post.comments)
+								.post-container
+									p Commentaire :
 
-	include commentForm.pug
+									if (typeof post.comments !== 'undefined' && post.comments.length >= 1)
+									each comment in post.comments
+										.comment.post-container
+											.authorComment= author.username + " : "
+											.textComment= comment.comment
+
+									if (loggedIn == true)
+										form(action=(typeof post._id === "undefined" ? ''  : '/posts/' + post._id + "/createComment"), method='POST')
+											.form-group
+											.col-12
+												textarea(placeholder="Saisir votre commentaire ici..." name="commentText")
+											.col-8
+												input(type="submit", value="Enregistrer commentaire", class="btn btn-primary")
+				else
+					.post-container.col-12
+						p= posts.title
+						p= posts.text
+						p= posts.author.username
+						.row
+							each tag in posts.tags
+								.col-sm-1.col-3
+									a(href="/tags/" + tag._id) #{tag.tag}
+					.col-md-6.col-12
+						if (typeof posts._id !== 'undefined' && posts._id != null && posts.comments)
+						.post-container
+							p Commentaire :
+
+							if (typeof posts.comments !== 'undefined' && posts.comments.length >= 1)
+								each comment in posts.comments
+									.comment.post-container
+										.authorComment= comment.author.username + " : "
+										.textComment= comment.comment
+
+							if (loggedIn == true)
+								form(action=(typeof posts._id === "undefined" ? ''  : '/posts/' + posts._id + "/createComment"), method='POST')
+									.form-group
+										.col-12
+											textarea(placeholder="Saisir votre commentaire ici..." name="commentText")
+										.col-8
+											input(type="submit", value="Enregistrer commentaire", class="btn btn-primary")
+
+				hr
+				if comments
+					each comment in comments
+						.comment.post-container
+							.authorComment= comment.author.username + " : "
+							if comment.comment
+								.textComment= comment.comment
 
 

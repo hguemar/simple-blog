@@ -3,11 +3,16 @@ div.row.menu.justify-content-center
 		a(href="/") Accueil
 	.col-2
 		a(href="/posts/createPost") Nouveau post
-	.col-2
-		a(href="/authors/") Mes posts
-	if req && req.session
+
+	
+	if(userID)
 		.col-2
-			p= "Connecté en tant que " + req.session.user
+			a(href="/authors/" + userID) Mes posts
+	.col-2
+		if(userID)
+			a(href="/auth/logout") Logout
+		else
+			a(href="/auth/login") Login
 
 if (author)
 	.filtre-content
