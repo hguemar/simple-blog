@@ -19,7 +19,7 @@ router.get('/:postId?', async (req, res) =>
 {
 	if (req.params.postId == 'createPost')
 	{
-		res.render('newPost', { loggedIn: isLoggedIn(req) });
+		res.render('newPost', { loggedIn: isLoggedIn(req), userID: req.session.userID});
 	}
 	else
 	{
@@ -28,8 +28,6 @@ router.get('/:postId?', async (req, res) =>
 			posts = await req.context.models.Posts.find({}).populate('author tags comments.author').exec();
 		else
 			posts = await req.context.models.Posts.findById(req.params.postId).populate('author tags comments.author').exec();
-
-		console.log(posts.comments);
 
 		var autoriseModif = false;
 		if (posts.author.username == req.session.user)
@@ -40,38 +38,11 @@ router.get('/:postId?', async (req, res) =>
 
 });
 
-// Get a post without logged in
-/*router.get('/:postId', async (req, res) => 
-{
-	const posts = await req.context.models.Posts.findById(req.params.postId,).populate('author tags').exec();
-
-	console.log(posts);
-
-	var autoriseModif = false;
-	if (posts.author.username == req.session.user)
-		autoriseModif = true;
-
-	res.render('posts', { posts: posts, loggedIn: isLoggedIn(req), autoriseModif: autoriseModif });
-});*/
-
-
 ///////////////////////////////////////////
 //                                       //
 // Need to be logged in after this point //
 //                                       //
 ///////////////////////////////////////////
-
-router.get('/createPost', loggedIn, async (req, res) => 
-{
-	res.render('newPost');
-});
-
-/*router.get('/:postId', async (req, res) => 
-{
-	const post = await req.context.models.Posts.findById(req.params.postId,).populate('author tags').exec();
-
-	res.render('posts', { post: post, loggedIn: loggedIn });
-});*/
 
 router.post('/:postId?', loggedIn, async (req, res) => 
 {
@@ -165,8 +136,6 @@ router.delete('/:postId', async (req, res) => {
 });
 
 router.post('/:postId/createComment', async(req, res) => {
-
-	console.log(req.session);
 
 	if (req.session.user != 'undefined')
 	{

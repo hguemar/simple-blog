@@ -32,7 +32,6 @@ router.post('/login', async function (req, res) {
 			req.session.user = req.body.username;
 			req.session.userID = user._id;
 			req.session.admin = true;
-			//res.send("login success!");
 			res.redirect('/');
 		}
 		else
@@ -50,7 +49,6 @@ router.get('/content', auth, function (req, res) {
 // Logout endpoint
 router.get('/logout', function (req, res) {
 	req.session.destroy();
-	//res.send("logout success!");
 	res.redirect('/');
 });
 
