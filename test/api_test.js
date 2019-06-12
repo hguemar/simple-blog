@@ -42,7 +42,7 @@ describe("Test routes", function()
 	});
 
 	it('/session should exist', function() {
-		return supertest(app).get('/session').expect(401);
+		return supertest(app).get('/session').expect(200);
 	});
 
 	it('/posts should exist', function() {
