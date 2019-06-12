@@ -17,25 +17,27 @@ var loggedIn = function(req, res, next) {
 
 router.get('/:postId?', async (req, res) => 
 {
-	if (req.params.postId == 'createPost')
-	{
-		res.render('newPost', { loggedIn: isLoggedIn(req), userID: req.session.userID});
-	}
+	var posts;
+	var autoriseModif = false;
+
+	if (typeof req.params.postId == 'undefined')
+		posts = await req.context.models.Posts.find({}).populate('author tags comments.author').exec();
 	else
 	{
-		var posts;
-		if (typeof req.params.postId == 'undefined')
-			posts = await req.context.models.Posts.find({}).populate('author tags comments.author').exec();
+		if (req.params.postId == 'createPost')
+		{
+			res.render('newPost', { loggedIn: isLoggedIn(req), userID: req.session.userID});
+		}
 		else
+		{
 			posts = await req.context.models.Posts.findById(req.params.postId).populate('author tags comments.author').exec();
-
-		var autoriseModif = false;
-		if (posts.author.username == req.session.user)
-			autoriseModif = true;
-
-		res.render('posts', { posts: posts, loggedIn: isLoggedIn(req), autoriseModif: autoriseModif, userID: req.session.userID });
+	
+			if (posts.author.username == req.session.user)
+				autoriseModif = true;
+		}
 	}
 
+	res.render('posts', { posts: posts, loggedIn: isLoggedIn(req), autoriseModif: autoriseModif, userID: req.session.userID });
 });
 
 ///////////////////////////////////////////
