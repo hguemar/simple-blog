@@ -10,7 +10,7 @@ router.get('/', async (req, res) => {
 		return res.send(author);
 	}		
 	else
-		return res.send(401);
+		return res.sendStatus(401);
 });
 
 module.exports = router;
