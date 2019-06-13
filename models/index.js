@@ -11,12 +11,6 @@ const connectDb = () => {
   return mongoose.connect(process.env.DATABASE_URL, { useNewUrlParser: true });
 };
 
-/*mongoose.connect('mongodb://user:pass@localhost:port/MyDB?authSource=admin', {
-    useNewUrlParser: true
-})
-.then(() => console.log('Connected to MongoDB ...'))
-.catch(err => console.error('Could not connect to MongoDB:‌', err));*/
-
 const models = { Authors, Posts, Tags };
 
 // Start
@@ -134,7 +128,5 @@ const createUsersWithMessages = async () => {
   await author2.save();
   await author3.save();
 };
-
-//module.exports = { connectDb };
 
 module.exports = models;
