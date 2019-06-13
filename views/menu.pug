@@ -17,6 +17,9 @@ div.row.menu.justify-content-center
 if (author)
 	.filtre-content
 		p.filtre= "Article de "+author
+else if (post !== undefined)
+	.filtre-content
+		p.filtre= "Article de "+post
 if (tag)
 	.filtre-content
 		p.filtre= "Article " + tag
