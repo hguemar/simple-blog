@@ -11,7 +11,7 @@ function isLoggedIn(req) {
 router.get('/', async (req, res) => {
 	const authors = await req.context.models.Authors.find();
 
-	res.render('index', { title: 'Authors' });
+	res.send(authors);
 });
 
 router.get('/:authorId', async (req, res) => 
