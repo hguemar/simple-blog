@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 
 const express = require('express');
+const methodOverride = require('method-override')
 const session = require('express-session');
 const cons = require('consolidate');
 const path = require('path');
@@ -23,6 +24,7 @@ app.engine('html', cons.pug);
 app.set('view engine', 'html');
 
 app.use(cookieParser());
+app.use(methodOverride('_method'))
 
 // Application-Level Middleware
 
@@ -31,7 +33,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 
 app.use(async (req, res, next) => {
-	req.context = { models, };
+	req.context = { models};
 	next();
   });
 
