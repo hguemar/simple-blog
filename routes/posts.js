@@ -127,22 +127,16 @@ router.post('/:postId?', loggedIn, async (req, res) =>
 		updatePost.save();
 	}
 
-	//posts = await req.context.models.Posts.findById(req.params.postId).populate('author tags').exec();
-
 	res.redirect('/');
 });
 
 router.delete('/:postId', async (req, res) => {
-  const post = await req.context.models.Posts.findById(
-    req.params.postId,
-  );
 
-  let result = null;
-  if (post) {
-    result = await post.remove();
-  }
+	const post = await req.context.models.Posts.findById(req.params.postId);
 
-  return res.send(result);
+	let result = null;
+	if (post) { result = await post.remove(); }
+	res.redirect('/');
 });
 
 router.post('/:postId/createComment', async(req, res) => {
