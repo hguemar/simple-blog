@@ -19,4 +19,4 @@
   
 ## Notes :
 
-Nous avons développé le projet sur une VM, donc nous n'avons pas utilisés les node_modules qui sont sur ce repo (car le temps de transfert vers la VM était gigantesque), mais ceux qui étaient sur la VM.
+Nous avons développé le projet sur une VM, donc nous n'avons pas utilisés les node_modules qui sont sur ce repo (car le temps de transfert vers la VM était gigantesque), mais ceux qui étaient déjà sur la VM.
