@@ -21,5 +21,8 @@
     "mongodb": "^3.2.4",
     "pug": "^2.0.3",
     "supertest": "^3.4.2"
+  },
+  "devDependencies": {
+    "casual": "^1.6.2"
   }
 }

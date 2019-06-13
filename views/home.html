@@ -1,0 +1,20 @@
+html
+    include head.pug
+    body
+        include menu.pug
+        div(class="container article-list")
+            each post in list
+                - var url = '/post/' + post._id
+                    div(class="card")
+                        h5(class="card-header") #{post.title}
+                        div(class="card-body")
+                            h6(class="card-title") By #{post.author}
+                            - var resume = post.body.split(' ').slice(0,10).reduce((acc, curr) => acc + " " + curr) + "..."
+                            p(class="card-text") #{resume}
+                            p(class="card-text")
+                                em #{post.date}
+                            a(class="btn btn-primary" href=url) Go to article
+            div(class="button-toolbar")
+                div(class="btn-group mr-2")
+                    each page in pages
+                        a(class=page.classes href=page.url) #{page.content}

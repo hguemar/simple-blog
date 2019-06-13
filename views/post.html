@@ -1,0 +1,27 @@
+html
+    include head.pug
+    script(src='/static/script.js')
+    body
+        include menu.pug
+        div(class="container")
+            div(class="card")
+                h1(class="card-header") #{post.title}
+                div(class="card-body")
+                    p(class="card-title") #{post.body}
+                    h5(class="card-text") Posted by #{post.author}
+                    h6(class="card-text") #{post.date}
+            
+            - var url = '/post/' + post._id
+            button(class="btn btn-danger" id="delete-button") Delete post
+                
+            form(action=url method="POST")
+                div(class="form-group")
+                    input(class="form-control" type="text" name="comment")
+                button(class="btn btn-primary" type="submit") Submit comment
+            - var comments = post.comments ? post.comments.sort((a, b) => a.date < b.date) : []
+            - var hasComments = comments.length > 0;
+            if hasComments
+                h4 Comments
+                ul(class="list-group")
+                each comment in comments
+                    li(class="list-group-item") #{comment.content}
