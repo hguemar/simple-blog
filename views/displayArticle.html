@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Article #{titre}</title>
+	<link rel="stylesheet" type="text/css" href="../css/global.css">
+</head>
+<body>
+	<h1 class="centrer titre">#{titre}</h1>
+	<br>
+	<div class="inline item-list-infos">
+		<div class="inline mh3">
+			<img class="centrerVertical" src="../img/auteur.png">
+			<span class="infos">#{auteur}</span>
+		</div>
+		<div class="inline mh3">
+			<img class="centrerVertical" src="../img/date.png">
+			<span class="infos">#{date}</span>
+		</div>
+	</div>
+	<div class="wp70 centrerMargin">
+		<p class="gras">#{resume}</p>
+	</div>
+	<br>
+	<div class="cadre">
+		<p>#{texte}</p>
+	</div>
+	<div class="boutonBasPage">
+		<a href="/post/delete/#{_id}">Supprimer l'article</a>
+	</div>
+</body>
+</html>

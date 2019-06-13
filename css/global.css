@@ -1,0 +1,225 @@
+body {
+	background-color: #f1f1f1;
+	color: 	#363a41;
+}
+
+h1, h2, h3, span, p, label, button, input, textarea, a {
+	font-family: Open Sans,Helvetica,Arial,sans-serif;
+}
+
+h1 {
+	font-size: 2rem;
+}
+h2 {
+	font-size: 1.5rem;
+}
+h3 {
+	font-size: 1.25rem;
+}
+span, p, label, button, input, textarea, a {
+	font-size: 1rem;
+	cursor: default;
+}
+
+label {
+	vertical-align: top;
+}
+
+input, textarea {
+	width: 100%;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+.titre {
+	color: #2fb5d2;
+	font-weight: bold;
+	margin-bottom: .25rem;
+}
+
+.gras {
+	font-weight: bold;
+}
+
+.wp70 {
+	width: 70%;
+}
+
+.mh3 {
+	margin: 0rem 3rem;
+}
+
+.separation {
+	border-top: .15rem solid;
+	border-color: green;
+	width: 50%;
+	margin: .3rem auto;
+}
+
+.infos {
+	font-size: .75rem;
+}
+
+.centrer {
+	text-align: center;
+}
+
+.centrerMargin {
+	margin: 0 auto;
+}
+
+.centrerVertical {
+	vertical-align: middle;
+}
+
+.inline {
+	display: inline-block;
+}
+
+.items-list {
+	display: table;
+	margin: auto;
+}
+
+.items-list > div {
+	margin: 2rem;
+	padding: 0rem 1rem 1rem 1rem;
+	background-color: white;
+	box-shadow: 2px 2px 8px 0 rgba(0,0,0,.2);
+	transition: ease all .25s;
+	border-radius: .15rem;
+	position: relative;
+	width: 17rem;
+	vertical-align: top;
+}
+
+.item-list-infos {
+	margin: auto;
+	display: table;
+}
+
+.item-list-buttons {
+	position: absolute;
+	right: .25rem;
+	top: .25rem;
+}
+
+.item-list-buttons > img {
+	display: block;
+	cursor: pointer;
+	margin: 0 .25rem;
+}
+
+.cadre {
+	background-color: white;
+	box-shadow: 2px 2px 8px 0 rgba(0,0,0,.2);
+	padding: 1rem;
+	margin: 1rem;
+}
+
+.boutonBasPage {
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	right: 0;
+}
+
+.boutonBasPage > a {
+	width: 100%;
+	display: block;
+}
+
+input[type="checkbox"], input[type="radio"] {
+	-webkit-appearance: none;
+	background-color: white;
+	width: 1.3rem;
+	height: 1.3rem;
+	border: 0.15rem solid #7a7a7a;
+	transition: 0.15s ease all;
+	outline-style: none;
+	margin: 0;
+	border-radius: 10%;
+	cursor: pointer;
+}
+input[type="checkbox"]:hover, input[type="radio"]:hover {
+	border-color: #2fb5d2;
+}
+input[type="checkbox"]:checked, input[type="radio"]:checked {
+	border-color: #2592a9;
+	background-color: #2fb5d2;
+}
+input[type="text"], input[type='password'], input[type='date'], select {
+	border-radius: 0.25rem;
+	background: #f1f1f1;
+	border: 0.05rem solid #7a7a7a;
+	padding: 0.3rem 0.8rem;
+	color: #7a7a7a;
+	outline-style: none;
+	transition: 0.15s ease all;
+	width: 100%;
+	font-weight: bold;
+}
+input[type="text"]:hover, input[type='password']:hover, input[type='date']:hover, select:hover {
+	border-color: #2fb5d2;
+}
+input[type="text"]:disabled, input[type='password']:disabled, input[type='date']:disabled, select:disabled {
+	background-color: #C4C4C4;
+	cursor: not-allowed;
+}
+textarea {
+	border-radius: .25rem;
+	background: #f1f1f1;
+	border: .05rem solid #7a7a7a;
+	padding: .3rem .8rem;
+	color: #7a7a7a;
+	outline-style: none;
+	transition: .15s ease all;
+	width: 100%;
+	font-weight: bold;
+}
+textarea:hover {
+	border-color: #2fb5d2;
+}
+textarea:disabled {
+	background-color: #C4C4C4;
+	cursor: not-allowed;
+}
+
+
+button, a {
+	margin-top: .25rem;
+	text-transform: uppercase;
+	line-height: inherit;
+	box-shadow: 2px 2px 4px 0 rgba(0,0,0,.2);
+	font-weight: 600;
+	padding: 0.5rem 1.25rem;
+	background-color: #2fb5d2;
+	border-color: transparent;
+	cursor: pointer;
+	color: white;
+	transition: 0.15s ease all;
+	text-align: center;
+}
+button:hover, a:hover {
+	background-color: #2592a9;
+}
+
+a {
+	text-decoration: none;
+}
+
+.formulaire {
+	margin: auto;
+}
+
+
+.formulaire > tbody > tr:not(:last-child) > td:first-child {
+	text-align: right;
+	vertical-align: top;
+}
+
+.formulaire > tbody > tr:not(:last-child) > td:first-child > label {
+	margin: 0rem 1rem 0rem 0rem;
+}
