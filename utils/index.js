@@ -1,5 +1,5 @@
 module.exports = {
-    generatePageItems: function (pageNumber, actualPage) {
+    generatePageItems: (pageNumber, actualPage) => {
         let pageIndexes = Array.apply(null, { length: pageNumber })
             .map(Number.call, Number);
 
@@ -36,7 +36,7 @@ module.exports = {
         let mappedPages = selectedPages.map(num => {
             return {
                 content: num + 1,
-                classes: num === actualPage ? "btn btn-secondary active" : "btn btn-secondary",
+                classes: num === actualPage ? 'btn btn-secondary active' : 'btn btn-secondary',
                 url: '/?page=' + (num + 1)
             }
         });

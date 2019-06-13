@@ -12,7 +12,7 @@ const port = process.env.PORT || 8000;
 app.engine('html', cons.pug);
 
 app.set('view engine', 'html');
-app.set('views', path.join( __dirname,  '/views'));
+app.set('views', path.join(__dirname, '/views'));
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -21,15 +21,15 @@ app.use('/static', express.static(path.join(__dirname, '/static')));
 
 var routes = require("./routes");
 
-MongoClient.connect(url, function(err, client) {
-  if(err) throw err;
+MongoClient.connect(url, (err, client) => {
+  if (err) throw err;
 
   routes(app);
-  
+
   app.client = client;
   app.db = client.db(dbName);
 
-  app.listen(port, function() {
+  app.listen(port, () => {
     console.log("now listening on http://localhost:" + port)
   });
 });
