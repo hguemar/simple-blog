@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Liste des articles</title>
+	<link rel="stylesheet" type="text/css" href="../css/global.css">
+</head>
+<body>
+	<h1 class="centrer">Liste des articles<h1>
+	<div class="items-list">
+		each element in data
+			<div class="inline" data-item-list="#{element.titre}">
+				<div class="item-list-buttons">
+					<img src="../img/edit.png" onclick="window.location.href = '/post/edit/#{element._id}';">
+					<img src="../img/delete.png" onclick="window.location.href = '/post/delete/#{element._id}';">
+				</div>
+				<h2 class="centrer titre">#{element.titre}</h2>
+				<p>#{element.resume}</p>
+				<div class="separation"></div>
+				<div class="item-list-infos">
+					<div>
+						<img class="centrerVertical" src="../img/auteur.png">
+						<span class="infos">#{element.auteur}</span>
+					</div>
+					<div>
+						<img class="centrerVertical" src="../img/date.png">
+						<span class="infos">#{element.date}</span>
+					</div>
+				</div>
+				<div class="centrer">
+					<a href="/post/#{element._id}">Consulter</a>
+				</div>
+			</div>
+	</div>
+	<div class="boutonBasPage">
+		<a href="/post/create">Ajouter un article</a>
+	</div>
+</body>
+</html>

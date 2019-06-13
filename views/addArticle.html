@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ajouter un article</title>
+	<link rel="stylesheet" type="text/css" href="../css/global.css">
+</head>
+<body>
+	<h1 class="centrer">Ajouter un article</h1>
+	<div class="cadre">
+		<form method="POST" action="/post/create">
+			<table class="formulaire">
+				<tr>
+					<td><label for="titre">Titre :</label></td>
+					<td>
+						<input type="text" id="titre" name="titre" placeholder="Cliquez pour écrire" size="100" required="required" maxlength="50">
+					</td>
+				</tr>
+				<tr>
+					<td><label for="date">Date :</label></td>
+					<td>
+						<input type="date" id="date" name="date" required="required">
+					</td>
+				</tr>
+				<tr>
+					<td><label for="auteur">Auteur :</label></td>
+					<td>
+						<input type="text" id="auteur" name="auteur" placeholder="Cliquez pour écrire" size="100" required="required" maxlength="20">
+					</td>
+				</tr>
+				<tr>
+					<td><label for="resume">Courte description :</label></td>
+					<td>
+						<input type="text" id="resume" name="resume" placeholder="Cliquez pour écrire" size="100" required="required" maxlength="120">
+					</td>
+				</tr>
+				<tr>
+					<td><label for="texte">Contenu de l'article :</label></td>
+					<td>
+						<textarea id="texte" name="texte" placeholder="Cliquez pour écrire" rows="15" cols="100" required="required"></textarea>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2" class="centrer">
+						<button type="submit" name="submit" id="submit">Enregistrer</button>
+					</td>
+				</tr>
+			</table>
+		</form>
+	</div>
+</body>
+</html>
