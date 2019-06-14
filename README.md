@@ -1,6 +1,3 @@
-BestShuffle => Sandro DIMITRIO / 
-Larchagann  => Antoine HOUZÉ
-
 # Simple blog
 
 ## Choix de technologies
