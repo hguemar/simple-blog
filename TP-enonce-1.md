@@ -32,7 +32,7 @@ Pour faciliter et toujours un départ de blog avec des données neuves, on a dé
 - vider la totalités des collections au lancement
 - recréer avec des objets qui se trouvent dans models/index.js
 
-Si vous voulez tester sans suppression des données à chaque départ, il faut mettre en commentaires des lignes de 17 jusqu'a 130 inclus dans le fichier models/index.js
+**Si vous voulez tester sans suppression des données à chaque départ, il faut mettre en commentaires des lignes de 17 jusqu'a 130 inclus dans le fichier models/index.js.**
 
 
 
@@ -43,7 +43,7 @@ La page devra s'afficher à la route `*/*`
 
 Quel verbe HTTP utiliser ?
 
-_Pour ceci, il faut utiliser le verbe GET_
+__Pour ceci, il faut utiliser le verbe GET__
 
 ## Afficher un article
 
@@ -54,12 +54,12 @@ Faire en sorte qu'un article avec l'identifiant unique ID s'affiche à la route 
 Créer un formulaire pour taper un article sur la route `*/post/create*`
 Le formulaire devra enclencher une action sur la même route, quel verbe HTTP utiliser?
 
-Pour récupérer le formulaire, on doit utiliser le verb GET. Pour assurer la sécurité en envoyant des données, on doit utiliser le POST.
+**Pour récupérer le formulaire, on doit utiliser le verb GET. Pour assurer la sécurité en envoyant des données, on doit utiliser le POST.**
 
 ## Supprimer un article
 
-Ajouter une route `*/post?<ID>>*` pour supprimer un article, quel verbe HTTP utiliser.`
-_On doit utiliser le verb DELETE pour assurer cette tâche. °
+Ajouter une route `*/post?<ID>>*` pour supprimer un article, quel verbe HTTP utiliser.
+**On doit utiliser le verbe DELETE pour assurer cette tâche. **
 
 ## Permettre la suppression d'un article
 
@@ -91,4 +91,29 @@ Vous serez noté, en fonction:
 * de la méthode de travail (versionning, tests, etc.)
 * de la conception
 * bonus pour la prise de risque (utilisation de technos différentes, petits plus)
+
+## Commentaire supplémentaire
+
+### LiveShare
+
+Très bonne expérience pour tous les deux. Cela nous permettait de coder sans risque de conflit. Attention cependant, les pertes de connexion peuvent entrainer de la perte de code, ce qui est sans doute le seul point négatif.
+
+### Bootstrap
+
+Utiliser Bootstrap nous a fait gagner du temps pour le style. C'est un outil puissant qui permet d'avoir très simplement un site responsive et bien structuré.
+
+### Heroku
+
+Nous avons utilisé Heroku pour se mettre un peu en conditions réelles en passant par le net. C'était utile pour tester les temps de réponse. Si vous ne parvenez pas à déployer, vous devriez pouvoir voir notre travail ici : https://nodedevops.herokuapp.com/
+
+### Les plus
+
+Nous avons ajouter un système de tag qui permet de filtrer les articles puis un système de filtre par auteur. Cela permet aussi de retrouver facilement ses propres posts. Nous avons aussi un système de login.
+
+## Déployer l'application
+
+- Cloner le repo
+- Faire un npm install
+- Faire un npm start
+- Les identifiants pour se connecter "admin/admin"
 
