@@ -23,5 +23,26 @@ describe("test blog posts endpoint", function() {
         .expect(200)
         .end(done);
     });
-  })
-})
+  });
+  describe("GET /post/:id", function() {
+    it("wrong id", function(done) {
+      supertest(app)
+          .get("/post/")
+          .set("User-Agent", "API testing")
+          .expect(function(res) {
+            assert(res.text.insert("Not found"))
+          })
+          .expect(404)
+          .end(done);
+    });
+  });
+  describe("DELETE /post/suppr/:id", function() {
+    it("", function(done) {
+      supertest(app)
+          .get("/post/suppr/:id")
+          .set("User-Agent", "API testing")
+          .expect(200)
+          .end(done);
+    });
+  });
+});

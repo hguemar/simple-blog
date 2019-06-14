@@ -1,0 +1,4 @@
+Lancer mongodb
+Créer une base de données nommée "blog" et l'utiliser
+Lancer server.js avec node
+Rejoindre localhost:8000 sur un navigateur
