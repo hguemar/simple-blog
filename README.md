@@ -61,3 +61,11 @@ Allez dans le dossier bin de MongoDB.
     mongorestore -d [nom de la base] dump/[nom de la base]/
 
 La base de données a été restaurée.
+
+## Test
+
+Il suffit d'utiliser la commande
+
+    npm test
+
+Les tests utilisent l'API pour récupérer tous les articles puis tente d'ajouter un article.
