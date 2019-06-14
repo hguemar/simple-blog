@@ -1,0 +1,28 @@
+doctype html
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+head
+  title Blog
+  
+body
+
+  - var id = article._id
+  - var titre = article.titre
+  - var resume = article.resume
+  - var contenu = article.contenu
+  - var auteur = article.auteur
+  - var date = article.date
+  
+  h1 #{titre}
+  h2(class="text-muted") #{resume} <br/><br/>
+  p #{contenu} <br/> <br/>
+  p 
+    em Auteur : #{auteur} <br/>
+    em Date : #{date}
+
+  <a href="/post/suppr/#{id}" method="get">
+    button(type="submit", class="btn btn-danger", method="get") Supprimer
+  </a>
+    
