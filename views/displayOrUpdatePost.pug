@@ -1,0 +1,40 @@
+if (loggedIn == false)
+	form(action='/posts/'+ post._id, method='POST')
+		.form-group
+			.row
+				.col-3
+					label(for='title')
+						input#title.form-control(type='text', placeholder='Title' name='title' value=post.title)
+			.row
+				.col-8
+					textarea(id="theTextarea" placeholder="Content post" name="textArea")
+					| #{post.text}
+			.row	
+				.col-3
+					input(type='text' name='tags' data-role="tagsinput" id="tags" class="form-control" value=post.tags)
+			.row	
+				.col-3
+					input(type="submit", value="submit").btn.btn-primary
+			input(type="submit", value="submit")
+else
+	.post-container.col-12
+		p= title
+		p= text
+		a(href="/authors/" + post.author._id) #{author.username} 
+		.row
+			each tag in tags
+				.col-sm-1.col-3
+					a(href="/tags/" + tag._id) #{tag.tag}
+	.col-md-6.col-12
+		include commentForm.pug
+
+	hr
+	if comments
+		each comment in comments
+			.comment.post-container
+				.authorComment= author.username + " : "
+				if comment.comment
+					.textComment= comment.comment
+
+
+	
