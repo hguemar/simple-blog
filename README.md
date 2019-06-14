@@ -1,4 +1,4 @@
-BestShuffle => Sandro DIMITRIO / 
+BestShuffle --> Sandro DIMITRIO / 
 Larchagann  => Antoine HOUZÉ
 
 # Simple blog
