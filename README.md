@@ -29,4 +29,7 @@ Le Framework Angular développé par Google permet la création de composants r�
 * NodeJS avec Express pour la création de l'API
 
 
+## TESTS
+`npm test`
 
+Aucun test ne fonctionne, je n'ai pas réussi à les mettre en oeuvre.
