@@ -1,4 +1,22 @@
 
+# Simple blog
+
+## Prérequis
+
+Vous devez avoir un serveur MongoDB sur votre machine (localhost) contenant une base "blog" ayant une collection "articles".
+
+## Installation
+
+  git clone https://github.com/BestShuffle/simple-blog.git
+
+  cd simple-blog
+
+  npm install
+
+  npm start
+
+L'application sera accessible 
+
 ## Dump
 
 Dump & Restore base de donnée MongoDB (sous Windows 10)
