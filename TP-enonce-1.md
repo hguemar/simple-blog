@@ -25,6 +25,8 @@ Définir le schéma de la base en quelques phrases, avec un exemple d'entrée au
 
 _Note: il faudra un identifiant unique pour chaque article !_
 
+_Notre base de données compose 3 collections : authors, posts, et tags. _
+
 
 ## Afficher la liste des articles
 
