@@ -25,7 +25,9 @@ Définir le schéma de la base en quelques phrases, avec un exemple d'entrée au
 
 _Note: il faudra un identifiant unique pour chaque article !_
 
-_Notre base de données compose 3 collections : authors, posts, et tags. _
+Notre base de données compose 3 collections : authors, posts, et tags._
+Pour gérer, on a décidé d'utiliser mongoose pour faciliter la gestion de ces collections. La gestion des données se fait toujours par _id généré par mongodb. Cette base de donnée mongo issue d'une service hébergement en ligne  https://cloud.mongodb.com/
+
 
 
 ## Afficher la liste des articles
@@ -34,6 +36,8 @@ Faire une page web permettant d'afficher la liste des articles. Bonus si la pagi
 La page devra s'afficher à la route `*/*`
 
 Quel verbe HTTP utiliser ?
+
+_Pour ceci, il faut utiliser le verbe GET_
 
 ## Afficher un article
 
@@ -44,10 +48,12 @@ Faire en sorte qu'un article avec l'identifiant unique ID s'affiche à la route 
 Créer un formulaire pour taper un article sur la route `*/post/create*`
 Le formulaire devra enclencher une action sur la même route, quel verbe HTTP utiliser?
 
+Pour récupérer le formulaire, on doit utiliser le verb GET. Pour assurer la sécurité en envoyant des données, on doit utiliser le POST.
 
 ## Supprimer un article
 
 Ajouter une route `*/post?<ID>>*` pour supprimer un article, quel verbe HTTP utiliser.`
+_On doit utiliser le verb DELETE pour assurer cette tâche. °
 
 ## Permettre la suppression d'un article
 
