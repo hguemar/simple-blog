@@ -38,6 +38,9 @@ describe('Test Route exists', function() {
 			.get('/posts')
 			.expect('Content-Type', 'text\/html; charset=utf-8', done);
 	});
+});
+
+describe('Test POST Login', function() {
 
 	it('POST request', function(done) {
 		var user = {username: 'admin', password:'admin'};
@@ -54,6 +57,5 @@ describe('Test Route exists', function() {
 			.send(user)
 			.expect('Content-Type', 'text\/html; charset=utf-8', done);
 	});
-
 
 });
