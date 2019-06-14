@@ -8,8 +8,6 @@ Utilisation d'Angular et de Material pour la partie client, pour permettre d'avo
 
 Vous devez avoir un serveur MongoDB sur votre machine (localhost) contenant une base "blog" ayant une collection "articles".
 
-Vous devez avoir angular sur votre poste.
-
 ## Installation
 
 Il suffit de cloner ce git sur votre poste et de télécharger les dépendances, puis de démarrer le serveur.
@@ -19,12 +17,6 @@ Il suffit de cloner ce git sur votre poste et de télécharger les dépendances,
     cd simple-blog
 
     npm install
-    
-    cd angular-blog
-    
-    ng build
-    
-    cd ..
 
     npm start
 
