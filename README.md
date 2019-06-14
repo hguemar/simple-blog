@@ -2,12 +2,12 @@
 ## Dump
 
 Dump & Restore base de donnée MongoDB (sous Windows 10)
-**(Le nom de notre base MongoDB est "blog")**
+**(Le nom de notre base MongoDB est "blog" avec une collection "articles")**
   
 Lancer le cmd en administrateur.
 Aller dans le dossier bin de MongoDB.
 
-lancer la commande : $ mongodump --db [nom de la base]
+lancer la commande : mongodump --db [nom de la base]
 
 Dans l'explorateur de fichier, aller dans le dossier de bin de MongoDB, 
 un dossier dump à été créer contenant un dossier nommer comme la base de donnée.
