@@ -23,5 +23,5 @@ describe("test blog posts endpoint", function() {
         .expect(200)
         .end(done);
     });
-  })
-})
+  });
+});
