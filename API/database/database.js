@@ -15,6 +15,10 @@ const option = {
     promiseLibrary: Promise,
 };
 
+/**
+ * Fonction de fermeture de la base de données
+ * @param client
+ */
 function closeDbConnection(client) {
     client.close();
     console.log("Connection closed");
@@ -23,6 +27,7 @@ function closeDbConnection(client) {
 
 module.exports = {
     insertDocument: (sCollection, data = {}, res) => {
+        // Connexion a la base Mongo
         const client = new MongoClient(uri, option);
         client.connect((err) => {
             if (err) log.error(`Error > ${err.message}`);
@@ -30,12 +35,14 @@ module.exports = {
             dbConn = client.db(dbName);
             const collection = dbConn.collection(sCollection);
             if (data.length > 1) {
+                // Insertion de plusieurs documents
                 collection.insertMany(data, (error, result) => {
                     if (error) log.error(`Error > ${error.message}`);
                     log.trace(result.insertedCount);
                     res.status(201).send({inserted: result.insertedCount});
                 });
             } else {
+                // Insertion d'un document
                 collection.insertOne(data, (error, result) => {
                     if (error) log.error(`Error > ${error.message}`);
                     log.trace(result.insertedCount);
@@ -47,12 +54,14 @@ module.exports = {
         // closeDbConnection(client);
     },
     getAllDocument: (sCollection, res) => {
+        // Connexion a la base Mongo
         const client = new MongoClient(uri, option);
         client.connect((err) => {
             if (err) log.error(`Error > ${err.message}`);
             log.trace("Connected successfully to server");
             dbConn = client.db(dbName);
             const collection = dbConn.collection(sCollection);
+            // récuperation de tous les documents sur la forme d'un tableau
             collection.find({}).toArray(function (err, docs) {
                 if (err) log.error(`Error > ${error.message}`);
                 log.trace("Found the following records");
@@ -68,6 +77,7 @@ module.exports = {
             log.trace("Connected successfully to server");
             dbConn = client.db(dbName);
             const collection = dbConn.collection(sCollection);
+            //Récupération d'un seul document (recherche par ObjectID)
             collection.findOne({"_id": new ObjectID(id)}, (err, doc) => {
                 if (err) log.error(`Error > ${error.message}`);
                 log.trace("Found the following records");
@@ -83,6 +93,7 @@ module.exports = {
             log.trace("Connected successfully to server");
             dbConn = client.db(dbName);
             const collection = dbConn.collection(sCollection);
+            // Recherche un document par ID et update
             collection.findOneAndUpdate({"_id": new ObjectID(id)}, {$set: data}, (err, result) => {
                 if (err) log.error(`Error > ${error.message}`);
                 res.status(200).send({result: result.ok, id: id});
@@ -96,6 +107,7 @@ module.exports = {
             log.trace("Connected successfully to server");
             dbConn = client.db(dbName);
             const collection = dbConn.collection(sCollection);
+            // Recherche un document par ID et delete
             collection.findOneAndDelete({"_id": new ObjectID(id)}, (err, result) => {
                 if (err) log.error(`Error > ${error.message}`);
                 res.status(200).send({result: result.ok, id: id});
