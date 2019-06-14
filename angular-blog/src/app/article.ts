@@ -1,3 +1,4 @@
+// Classe d'objet Article
 export class Article {
   _id: String;
   title: String;

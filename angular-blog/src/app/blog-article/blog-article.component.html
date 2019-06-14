@@ -1,6 +1,6 @@
 <mat-card class="blog-article-card">
-  <mat-card-header>
-    <mat-card-title class="blog-article-title" [routerLink]="['article', article._id]" routerLinkActive="active">
+  <mat-card-header class="blog-article-title">
+    <mat-card-title [routerLink]="['article', article._id]" routerLinkActive="active">
       <u>{{article.title}}</u></mat-card-title>
     <mat-card-subtitle class="blog-article-date-author">{{getDateStr(article.date)}} - {{ article.author }}</mat-card-subtitle>
     <div class="spacer"></div>

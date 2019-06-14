@@ -5,6 +5,7 @@ import {Article} from "./article";
 @Injectable({
   providedIn: 'root'
 })
+// Classe de gestion de l'accès à la base de données
 export class BlogDbService {
 
   private apiUrl = "http://localhost:8000/api";
