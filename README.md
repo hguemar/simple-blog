@@ -17,6 +17,12 @@ Il suffit de cloner ce git sur votre poste et de télécharger les dépendances,
     cd simple-blog
 
     npm install
+    
+    cd angular-blog
+    
+    ng build
+    
+    cd ..
 
     npm start
 
