@@ -1,0 +1,28 @@
+{
+  "articles": [
+    {
+      "author": "Grégoire CHENAL",
+      "title": "Honda Civic",
+      "date": "01/01/2000",
+      "resume": "En ce jour merveilleux, une voiture d'exception a été produite. Cette voiture fait le bonheur de son actuel propriétaire. Ce jeune kéké a installé un silencieux de 11 cm de diamètre. Il semblerait que Grégoire ait un problème d'inférorité."
+    },
+    {
+      "author": "Lucas MARTEL",
+      "title": "Hyundai GETZ",
+      "date": "10/02/2006",
+      "resume": "En ce jour merveilleux, une voiture a été mise en circulation : une Hyundai GETZ 1.5 CRDI. Son actuel propriétaire Lucas MARTEL ne supporte plus ce véhicule, il le trouve dangereux. Chaque technologie présente dans la voiture tombent en panne les unes après les autres."
+    },
+    {
+      "author": "Lucas MARTEL",
+      "title": "Nissan GT-R 2019 Nismo",
+      "date": "01/01/2019",
+    "resume": "Ce véhicule d'exception est le rêve de Lucas MARTEL."
+    },
+    {
+      "author": "Grégoire CHENAL",
+      "title": "Honda Civic Type-R",
+      "date": "21/10/1997",
+      "resume": "Ce véhicule d'exception est le rêve de Grégoire CHENAL."
+    }
+  ]
+}
