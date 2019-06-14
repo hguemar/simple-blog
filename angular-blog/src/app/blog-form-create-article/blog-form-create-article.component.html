@@ -1,0 +1,17 @@
+<form [formGroup]="articleForm" (ngSubmit)="onArticleSubmit()" class="blog-article-creation-container">
+  <h1>Article creation</h1>
+  <mat-form-field appearance="outline">
+    <mat-label>Title</mat-label>
+    <input type="text" matInput formControlName="title" placeholder="Something">
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Author</mat-label>
+    <input type="text" matInput formControlName="author" placeholder="Someone">
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Content</mat-label>
+    <textarea matInput formControlName="content" placeholder="Something interesting..."></textarea>
+  </mat-form-field>
+
+  <button type="submit" mat-raised-button color="primary" [disabled]="!this.articleForm.valid">Save</button>
+</form>

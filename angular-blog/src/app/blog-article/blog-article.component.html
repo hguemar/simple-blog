@@ -1,0 +1,16 @@
+<mat-card class="blog-article-card">
+  <mat-card-header class="blog-article-title">
+    <mat-card-title [routerLink]="['article', article._id]" routerLinkActive="active">
+      <u>{{article.title}}</u></mat-card-title>
+    <mat-card-subtitle class="blog-article-date-author">{{getDateStr(article.date)}} - {{ article.author }}</mat-card-subtitle>
+    <div class="spacer"></div>
+    <mat-icon class="blog-article-delete-icon" (click)="clickDelete(article)">delete</mat-icon>
+  </mat-card-header>
+  <mat-card-content>
+    <p class="blog-article-content">{{ article.content }}</p>
+  </mat-card-content>
+  <mat-card-actions>
+    <div class="spacer"></div>
+    <button mat-raised-button color="primary" (click)="clickRead(article)">Read</button>
+  </mat-card-actions>
+</mat-card>
