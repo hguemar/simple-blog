@@ -15,7 +15,9 @@ Vous devez avoir un serveur MongoDB sur votre machine (localhost) contenant une 
 
     npm start
 
-L'application sera accessible 
+L'application sera accessible sur le port 8000
+
+    http://localhost:8000/
 
 ## Dump
 
