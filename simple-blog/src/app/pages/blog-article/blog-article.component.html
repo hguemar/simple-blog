@@ -1,0 +1,55 @@
+<mat-grid-list cols="1" rowHeight="75px">
+  <mat-grid-tile rowspan="1">
+    <div class="blog-left-element blog-back-button-container">
+      <button class="blog-back-button" routerLink="/accueil">
+        <mat-icon class="blog-back-icon" aria-hidden="false" aria-label="back icon">arrow_back_ios</mat-icon>
+        Accueil
+      </button>
+    </div>
+    <div class="blog-right-element blog-del-button-container" *ngIf="getIsUpdate">
+      <button class="blog-back-button blog-delete-button" (click)="deletePost()">
+        <mat-icon class="blog-back-icon" aria-hidden="false" aria-label="back icon">delete_outline</mat-icon>
+        Supprimer
+      </button>
+    </div>
+  </mat-grid-tile>
+  <mat-grid-tile rowspan="1">
+    <!-- Titre de l'article-->
+    <div class="blog-centered-element blog-form-container">
+      <input type="text" id="title"
+             placeholder="Titre de l'article" class="blog-form-element" [(ngModel)]="sTitle">
+    </div>
+  </mat-grid-tile>
+  <!-- Auteur de l'article-->
+  <mat-grid-tile rowspan="1">
+    <div class="blog-centered-element blog-form-container">
+      <input type="text" id="author"
+             placeholder="Auteur" class="blog-form-element" [(ngModel)]="sAuthor">
+    </div>
+  </mat-grid-tile>
+  <!-- Resume de l'article-->
+  <mat-grid-tile rowspan="3">
+    <div class="blog-centered-element blog-form-container">
+      <textarea id="resume" placeholder="Résumé" class="blog-form-element" [(ngModel)]="sResume"></textarea>
+    </div>
+  </mat-grid-tile>
+
+  <!-- Contenu de l'article-->
+  <mat-grid-tile rowspan="3">
+    <div class="blog-centered-element blog-form-container">
+      <textarea id="content" placeholder="Contenu" class="blog-form-element" [(ngModel)]="sContent"></textarea>
+    </div>
+  </mat-grid-tile>
+  <!-- Bouton submit formulaire -->
+  <mat-grid-tile rowspan="1">
+    <div class="blog-centered-element blog-form-container">
+      <button class="blog-submit-form" (click)="submitForm()">
+        <mat-icon class="blog-save-icon" aria-hidden="false" aria-label="Save icon">save</mat-icon>
+        Enregistrer
+      </button>
+      <!--      <button> type="submit" class="blog-submit-form" value="Enregistrer">-->
+    </div>
+  </mat-grid-tile>
+</mat-grid-list>
+
+<app-blog-footer></app-blog-footer>

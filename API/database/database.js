@@ -39,7 +39,7 @@ module.exports = {
                 collection.insertOne(data, (error, result) => {
                     if (error) log.error(`Error > ${error.message}`);
                     log.trace(result.insertedCount);
-                    res.status(201).send({inserted: result.insertedCount});
+                    res.status(201).send({result: result.insertedCount, id: result.insertedId});
                 });
             }
         });
@@ -73,6 +73,32 @@ module.exports = {
                 log.trace("Found the following records");
                 res.status(200).send(doc);
                 // closeDbConnection(client);
+            });
+        });
+    },
+    findDocumentByIdAndUpdate: (sCollection, id, data, res) => {
+        const client = new MongoClient(uri, option);
+        client.connect((err) => {
+            if (err) log.error(`Error > ${err.message}`);
+            log.trace("Connected successfully to server");
+            dbConn = client.db(dbName);
+            const collection = dbConn.collection(sCollection);
+            collection.findOneAndUpdate({"_id": new ObjectID(id)}, {$set: data}, (err, result) => {
+                if (err) log.error(`Error > ${error.message}`);
+                res.status(200).send({result: result.ok, id: id});
+            });
+        });
+    },
+    findDocumentByIdAndDelete: (sCollection, id, res) => {
+        const client = new MongoClient(uri, option);
+        client.connect((err) => {
+            if (err) log.error(`Error > ${err.message}`);
+            log.trace("Connected successfully to server");
+            dbConn = client.db(dbName);
+            const collection = dbConn.collection(sCollection);
+            collection.findOneAndDelete({"_id": new ObjectID(id)}, (err, result) => {
+                if (err) log.error(`Error > ${error.message}`);
+                res.status(200).send({result: result.ok, id: id});
             });
         });
     }

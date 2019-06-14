@@ -1,0 +1,51 @@
+<mat-grid-list [cols]="breakpoint" rowHeight="1:1" (window:resize)="onResize($event)">
+  <mat-grid-tile *ngFor="let post of pagedItems">
+    <div class="blog-thumbnail-container" routerLink="/article/{{post['_id']}}">
+      <div class="blog-thumbnail-angle blog-right-element">
+        <img src="assets/Angle rouge.png" alt="" width="32" height="24">
+      </div>
+      <div class="blog-left-content blog-thumbnail-title">
+        <h2 class="blog-thumbnail-content blog-text-overflow">{{post.title}}</h2>
+      </div>
+      <div class="blog-left-content blog-margintop-15" style="display: flex">
+        <mat-icon class="" aria-hidden="false" aria-label="Calendar icon">calendar_today</mat-icon>
+        <p class="blog-thumbnail-content blog-text-overflow">{{post.date}}</p>
+      </div>
+      <div class="blog-left-content blog-margintop-15" style="display: flex">
+        <mat-icon class="" aria-hidden="false" aria-label="avatar icon">person_outline</mat-icon>
+        <p class="blog-thumbnail-content blog-text-overflow">{{post.author}}</p>
+      </div>
+      <div class="blog-left-content blog-margintop-15 blog-thumbnail-resume" style="display: flex">
+        <mat-icon class="" aria-hidden="false" aria-label="Text icon">bookmark_border</mat-icon>
+        <p class="blog-thumbnail-content">{{post.resume}}</p>
+      </div>
+    </div>
+  </mat-grid-tile>
+  <mat-grid-tile>
+    <div class="blog-thumbnail-container">
+      <div class="blog-thumbnail-angle blog-right-element">
+        <img src="assets/Angle rouge.png" alt="" width="32" height="24">
+      </div>
+
+      <div class="blog-centered-element blog-addpost-container">
+        <div class="blog-add-button blog-centered-element" routerLink="/article/new">
+          <mat-icon class="blog-add-icon" aria-hidden="false" aria-label="Add icon">add</mat-icon>
+        </div>
+      </div>
+
+    </div>
+  </mat-grid-tile>
+</mat-grid-list>
+
+
+<div class="blog-centered-element blog-margintop-15">
+  <div class="blog-pagination">
+    <a (click)="setPage(1)" [ngClass]="{disabled:pager.currentPage === 1}">First</a>
+    <a [ngClass]="{disabled:pager.currentPage === 1}" (click)="setPage(pager.currentPage - 1)">&laquo;</a>
+    <a *ngFor="let page of pager.pages"
+       [ngClass]="{active:pager.currentPage === page}" (click)="setPage(page)">{{page}}</a>
+    <a [ngClass]="{disabled:pager.currentPage === pager.totalPages}"
+       (click)="setPage(pager.currentPage + 1)">&raquo;</a>
+    <a [ngClass]="{disabled:pager.currentPage === pager.totalPages}" (click)="setPage(pager.totalPages)">Last</a>
+  </div>
+</div>
