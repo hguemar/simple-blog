@@ -6,19 +6,14 @@ block content
 		form(action='/posts/', method='POST')
 			.post-container
 				.form-group
-					.row
-						.col-3
-							label(for='title')
-								input#title.form-control(type='text', placeholder='Title' name='title')
-					.row
-						.col-8
-							textarea(id="theTextarea" placeholder='Content post' name='textArea' cols="200")
-					.row
-						.col-3
-							input(type='text' name='tags' data-role="tagsinput" id="tags" class="form-control")
-					.row
-						.col-3
-							input(type="submit", value="submit").btn.btn-primary
+					.row.col-12
+						input#title.form-control(type='text', placeholder='Title' name='title')
+					.row.col-12
+						textarea(id="theTextarea" placeholder='Content post' name='textArea' class="post-textarea")
+					.row.col-12
+						input(type='text' name='tags' data-role="tagsinput" id="tags" class="form-control" class="tag-post")
+					.row.col-3
+						input(type="submit", value="submit").btn.btn-primary
 	else
 		p= 'You are not logged in !'
 

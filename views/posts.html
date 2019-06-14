@@ -6,14 +6,14 @@ block content
 			.post-container
 				form(action='/posts/'+ posts._id, method='POST')
 					.form-group
-						.col-3
-							label(for='title')
-								input#title.form-control(type='text', placeholder='Title' name='title' value=posts.title)
-						.col-3
-							textarea(id="theTextarea" placeholder="Content post" name="textArea")
+						.row.col-12
+							input#title.form-control(type='text', placeholder='Title' name='title' value=posts.title)
+						.row.col-12
+							textarea(id="theTextarea" placeholder="Content post" name="textArea" class="post-textarea")
 								| #{posts.text}
+						.row.col-12
 							input(type='text' name='tags' data-role="tagsinput" id="tags" class="form-control" value=tagsArray)
-						.col-3
+						.row.col-3
 							input(type="submit", value="submit")
 
 				form(action='/posts/'+ posts._id + '?_method=DELETE', method='POST')

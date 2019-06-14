@@ -8,12 +8,13 @@ function isLoggedIn(req) {
 	  return false;
 }
 
+// Authentication and Authorization Middleware
 var loggedIn = function(req, res, next) {
-	if (typeof req.session.user != 'undefined')
+	if (req.session && req.session.user != null && req.session.admin)
 	  return next();
 	else
 	  return res.sendStatus(401);
-}
+  };
 
 router.get('/:postId?', async (req, res) => 
 {
@@ -27,25 +28,26 @@ router.get('/:postId?', async (req, res) =>
 	{
 		if (req.params.postId == 'createPost')
 		{
-			res.render('newPost', { loggedIn: isLoggedIn(req), userID: req.session.userID});
+			return res.render('newPost', { loggedIn: isLoggedIn(req), userID: req.session.userID});
 		}
 		else
 		{
 			posts = await req.context.models.Posts.findById(req.params.postId).populate('author tags comments.author').exec();
 			if (posts)
-				if (posts.author.username == req.session.user) {
+			{
+				if (posts.author.username == req.session.user) 
+				{
 					autoriseModif = true;
 					for (i=0; i<posts.tags.length; i++) {
 						tagsArray.push(posts.tags[i].tag);
 					}
 					tagsArray = tagsArray.join(" ");
 				}
-					
-						
+			}
 		}
 	}
 
-	res.render('posts', { posts: posts, loggedIn: isLoggedIn(req), autoriseModif: autoriseModif, userID: req.session.userID, tagsArray: tagsArray});
+	return res.render('posts', { posts: posts, loggedIn: isLoggedIn(req), autoriseModif: autoriseModif, userID: req.session.userID, tagsArray: tagsArray});
 });
 
 ///////////////////////////////////////////
