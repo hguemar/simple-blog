@@ -7,6 +7,8 @@ Vous devez avoir un serveur MongoDB sur votre machine (localhost) contenant une 
 
 ## Installation
 
+Il suffit de cloner ce git sur votre poste et de télécharger les dépendances, puis de démarrer le serveur.
+
     git clone https://github.com/BestShuffle/simple-blog.git
 
     cd simple-blog
