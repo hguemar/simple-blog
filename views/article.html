@@ -1,0 +1,12 @@
+doctype html
+html(lang="en")
+  head
+    title Blog
+  body
+      p Consultation d'un article
+
+      each article in articleDetail
+        - var inputValue = article.body
+        p 
+          li Corps : #{inputValue}
+          
