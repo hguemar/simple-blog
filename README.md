@@ -30,7 +30,7 @@ Lancez le cmd en administrateur.
 
 Allez dans le dossier bin de MongoDB.
 
-Lancez la commande
+### Lancez la commande
 
     mongodump --db [nom de la base]
 
@@ -50,7 +50,7 @@ Lancez le cmd en administrateur.
 
 Allez dans le dossier bin de MongoDB.
 
-Lancez la commande
+### Lancez la commande
 
     mongorestore -d [nom de la base] dump/[nom de la base]/
 
