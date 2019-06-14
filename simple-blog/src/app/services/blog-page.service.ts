@@ -8,6 +8,7 @@ export class BlogPageService {
   constructor() {
   }
 
+  // Pagination des articles
   getPager(totalItems: number, currentPage: number = 1, pageSize: number = 10) {
     // calculate total pages
     const totalPages = Math.ceil(totalItems / pageSize);

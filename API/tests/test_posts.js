@@ -2,6 +2,8 @@ const app = require("../server");
 const supertest = require("supertest");
 const assert = require("chai").assert;
 
+// FIXME Le test échoue
+// Je ne sais pas écrire les tests unitaires
 describe("Test get all posts", () => {
     describe("GET /posts", () => {
         it('should return array of posts', function (done) {

@@ -30,12 +30,13 @@ simpleBlogRoutes.put("/posts/:id", (req, res) => {
     const _id = req.params.id;
     dbUtil.findDocumentByIdAndUpdate(config.database.collection, _id, req.body, res);
 });
+// Supprime un seul document
 simpleBlogRoutes.delete("/posts/:id", (req, res) => {
     const _id = req.params.id;
     console.log("delete");
     dbUtil.findDocumentByIdAndDelete(config.database.collection, _id, res);
 });
-
+// Ajoute un document
 simpleBlogRoutes.post('/posts', (req, res) => {
     dbUtil.insertDocument(config.database.collection, req.body, res);
 });

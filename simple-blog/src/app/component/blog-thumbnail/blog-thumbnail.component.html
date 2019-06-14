@@ -1,3 +1,5 @@
+<!--Vignette articles -->
+<!-- Foreach dans le template HTML pour générer a la volée les composants-->
 <mat-grid-list [cols]="breakpoint" rowHeight="1:1" (window:resize)="onResize($event)">
   <mat-grid-tile *ngFor="let post of pagedItems">
     <div class="blog-thumbnail-container" routerLink="/article/{{post['_id']}}">
@@ -21,6 +23,7 @@
       </div>
     </div>
   </mat-grid-tile>
+  <!--  Vignette pour ajouter un article-->
   <mat-grid-tile>
     <div class="blog-thumbnail-container">
       <div class="blog-thumbnail-angle blog-right-element">
@@ -37,7 +40,7 @@
   </mat-grid-tile>
 </mat-grid-list>
 
-
+<!--Module de pagination -->
 <div class="blog-centered-element blog-margintop-15">
   <div class="blog-pagination">
     <a (click)="setPage(1)" [ngClass]="{disabled:pager.currentPage === 1}">First</a>

@@ -21,6 +21,7 @@ export class BlogThumbnailComponent implements OnInit {
   }
 
   ngOnInit() {
+    //On récupère un tableau de JSON contenant tous les documents articles
     this.resize(window.innerWidth);
     const uri = 'posts';
     const serverResponse = this.callServer.getRequest(uri);
@@ -39,6 +40,10 @@ export class BlogThumbnailComponent implements OnInit {
     return this.posts;
   }
 
+  /**
+   * gère le postionnement des éléments dans la page (Attribut cols de la mat-grid-list)
+   * @param innerWidth
+   */
   private resize(innerWidth): void {
     if (innerWidth < 1400) {
       this.breakpoint = 3;
