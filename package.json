@@ -1,25 +1,24 @@
 {
-  "name": "simple_blog",
-  "version": "1.0.0",
-  "description": "xxx",
-  "main": "server.js",
+  "name": "application-name",
+  "version": "0.0.1",
+  "private": true,
   "scripts": {
-    "start": "node server.js",
-    "test": "mocha tests/*"
+    "start": "nodemon ./bin/www",
+    "test": "mocha ./test/APITest"
   },
-  "keywords": [
-    "blog"
-  ],
-  "author": "xxx",
-  "license": "ISC",
   "dependencies": {
     "body-parser": "^1.19.0",
-    "chai": "^4.2.0",
     "consolidate": "^0.15.1",
-    "express": "^4.16.4",
-    "mocha": "^5.2.0",
-    "mongodb": "^3.2.4",
+    "cookie-parser": "^1.4.4",
+    "dotenv": "^8.0.0",
+    "express": "^4.17.1",
+    "express-session": "^1.16.1",
+    "method-override": "^3.0.0",
+    "mocha": "^6.1.4",
+    "mongoose": "^5.5.14",
+    "nodemon": "^1.19.1",
+    "npm": "^6.9.0",
     "pug": "^2.0.3",
-    "supertest": "^3.4.2"
+    "supertest": "^4.0.2"
   }
 }
