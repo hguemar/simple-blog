@@ -1,0 +1,21 @@
+doctype html
+html(lang="en")
+  head
+  p  Ajout d'un article
+  body
+    form(action='/post/create', method='POST')
+      p Quel est le titre de l'article ?
+        input(type='text'  name='titre' value='titre')
+
+      p Quel est le corps de l'article ?
+        input(type='text' name='corps'  value='corps')
+
+      p Quel est le resumé de l'article ?
+        input(type='text' name='resume' value='resume')
+
+      p Quel est le date de l'article ?
+        input(type='date' name='date' checked value='date')
+      
+      input(type='submit' value='submit')
+    
+

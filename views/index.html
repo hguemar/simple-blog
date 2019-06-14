@@ -1,5 +1,15 @@
-doctype html 
-head
-  title XXX
-body
-  Hello world
+doctype html
+html(lang="en")
+  head
+    title Blog
+  body
+      a(class='button' href='/new') Ajouter un article
+      
+      p Liste des articles :
+      ul
+      each val in articles
+        - var inputValue = val.title
+        p 
+          li Titre : #{inputValue} 
+            a(href='/post/'+val._id) Consulter l'article
+            a(href='/delete/'+val._id) Supprimer l'article
