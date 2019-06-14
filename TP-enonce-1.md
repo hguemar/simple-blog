@@ -115,5 +115,5 @@ Nous avons ajouter un système de tag qui permet de filtrer les articles puis un
 - Cloner le repo
 - Faire un npm install
 - Faire un npm start
-- Les identifiants pour se connecter "admin/admin"
+- Les identifiants pour se connecter sont mentionnés dans README
 
