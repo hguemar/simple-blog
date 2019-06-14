@@ -32,7 +32,7 @@ Pour faciliter et toujours un départ de blog avec des données neuves, on a dé
 - vider la totalités des collections au lancement
 - recréer avec des objets qui se trouvent dans models/index.js
 
-Si vous voulez tester sans suppression des données à chaque départ, il faut mettre en commentaires des lignes de 17 jusqu'a 130 inclus.
+Si vous voulez tester sans suppression des données à chaque départ, il faut mettre en commentaires des lignes de 17 jusqu'a 130 inclus dans le fichier models/index.js
 
 
 
