@@ -1,0 +1,11 @@
+La base de donnée s'appelle "blog", 
+Composée de la collection "article", 
+Composée des champs suivants :
+{
+    _id: 
+    titre: 
+    resume: 
+    contenu: 
+    auteur: 
+    date: 
+}

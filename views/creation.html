@@ -1,0 +1,18 @@
+doctype html
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+head
+  title Blog
+  
+body
+
+  form(method="post")
+    div(class="form-group")
+      input(type="text", class="form-control", id="titre", placeholder="Titre de l'article", name="titre")
+      input(type="text", class="form-control", id="resume", placeholder="Résumé de l'article", name="resume")
+      input(type="text", class="form-control", id="auteur", placeholder="Auteur de l'article", name="auteur")
+      textarea(class="form-control", id="contenu", placeholder="Contenu de l'article", rows="10", name="contenu")
+      button(type="submit", value="Submit", class="btn btn-primary") Créer
+
