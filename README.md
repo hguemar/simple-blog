@@ -1,6 +1,10 @@
 
 # Simple blog
 
+## Choix de technologies
+
+Utilisation d'Angular et de Material pour la partie client, pour permettre d'avoir une utilisation des web components et une construction plus complexe mais qui dans le futur sera plus simple à maintenir (réutilisabilité du code).
+
 ## Prérequis
 
 Vous devez avoir un serveur MongoDB sur votre machine (localhost) contenant une base "blog" ayant une collection "articles".
