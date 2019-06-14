@@ -7,13 +7,13 @@ Vous devez avoir un serveur MongoDB sur votre machine (localhost) contenant une 
 
 ## Installation
 
-  git clone https://github.com/BestShuffle/simple-blog.git
+    git clone https://github.com/BestShuffle/simple-blog.git
 
-  cd simple-blog
+    cd simple-blog
 
-  npm install
+    npm install
 
-  npm start
+    npm start
 
 L'application sera accessible 
 
