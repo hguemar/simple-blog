@@ -1,0 +1,82 @@
+extends layout
+
+block content
+	.row
+		if (loggedIn == true && autoriseModif)
+			.post-container
+				form(action='/posts/'+ posts._id, method='POST')
+					.form-group
+						.row.col-12
+							input#title.form-control(type='text', placeholder='Title' name='title' value=posts.title)
+						.row.col-12
+							textarea(id="theTextarea" placeholder="Content post" name="textArea" class="post-textarea")
+								| #{posts.text}
+						.row.col-12
+							input(type='text' name='tags' data-role="tagsinput" id="tags" class="form-control" value=tagsArray)
+						.row.col-3
+							input(type="submit", value="submit")
+
+
+				form(action='/posts/'+ posts._id + '?_method=DELETE', method='POST')
+					input(type="submit", value="Delete post")
+		else
+			if (posts != null)
+				if (posts.length > 1)
+					.row
+						each post in posts
+							.post-container.col-12
+								p= post.title
+								p= post.text
+								a(href="/authors/" + post.author._id) #{post.author.username} 
+								.row
+									each tag in post.tags
+										.col-sm-1.col-3
+											a(href="/tags/" + tag._id) #{tag.tag}
+							.col-md-6.col-12
+								if (typeof post._id !== 'undefined' && post._id != null && post.comments)
+								.post-container
+									p Commentaire :
+
+									if (typeof post.comments !== 'undefined' && post.comments.length >= 1)
+									each comment in post.comments
+										.comment.post-container
+											.authorComment= author.username + " : "
+											.textComment= comment.comment
+
+									if (loggedIn == true)
+										form(action=(typeof post._id === "undefined" ? ''  : '/posts/' + post._id + "/createComment"), method='POST')
+											.form-group
+											.col-12
+												textarea(placeholder="Saisir votre commentaire ici..." name="commentText")
+											.col-8
+												input(type="submit", value="Enregistrer commentaire", class="btn btn-primary")
+				else
+					.post-container.col-12
+						p= posts.title
+						p= posts.text
+						a(href="/authors/" + posts.author._id) #{posts.author.username} 
+						.row
+							each tag in posts.tags
+								.col-sm-1.col-3
+									a(href="/tags/" + tag._id) #{tag.tag}
+					.col-md-6.col-12
+						if (typeof posts._id !== 'undefined' && posts._id != null && posts.comments)
+							if (loggedIn == true)
+								.post-container
+									p Nouveau commentaire :
+									form(action=(typeof posts._id === "undefined" ? ''  : '/posts/' + posts._id + "/createComment"), method='POST')
+										.form-group
+											.col-12
+												textarea(placeholder="Saisir votre commentaire ici..." name="commentText")
+											br
+											.col-8
+												input(type="submit", value="Enregistrer commentaire", class="btn btn-primary")
+							if (typeof posts.comments !== 'undefined' && posts.comments.length >= 1)
+								.post-container
+									p Commentaire :
+									each comment in posts.comments
+										.comment.post-container
+											.authorComment= comment.author.username + " : "
+											.textComment= comment.comment
+
+
