@@ -35,7 +35,6 @@ export class BlogArticleComponent implements OnInit {
       const serverResponse = this.callServer.getRequest(`posts/${this.postID}`);
       serverResponse.subscribe(
         (resp: any) => {
-          console.log(resp);
           if (resp === null) {
             this.router.navigate([`/accueil`]).catch(err => console.error(err));
             return;
