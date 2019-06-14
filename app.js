@@ -33,7 +33,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 
 app.use(async (req, res, next) => {
-	req.context = { models};
+	req.context = { models };
 	next();
   });
 
@@ -72,7 +72,7 @@ app.use(function(err, req, res, next) {
     res.status(err.status || 500);
     res.render('error', {
         message: err.message,
-        error: {}
+        error: err
     });
 });
 
