@@ -1,0 +1,7 @@
+<mat-grid-list class="blog-articles-grid" [cols]="breakpoint" rowHeight="2:1" (window:resize)="onResize($event)">
+  <ng-template ngFor let-article [ngForOf]="articles">
+    <mat-grid-tile>
+      <app-blog-article [article]="article" (clickDeleteEvent)="clickArticleDelete($event)"></app-blog-article>
+    </mat-grid-tile>
+  </ng-template>
+</mat-grid-list>

@@ -1,3 +1,4 @@
+/*
 var app = require("../server.js");
 var supertest = require("supertest");
 var assert = require("chai").assert;
@@ -22,3 +23,4 @@ describe("test blog index endpoint", function() {
       .end(done);
 });
 })
+*/

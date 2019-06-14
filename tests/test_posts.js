@@ -2,26 +2,32 @@ var app = require("../server.js");
 var supertest = require("supertest");
 var assert = require("chai").assert;
 
-describe("test blog posts endpoint", function() {
-  describe("GET /post/create", function() {
-    it("should have content-type text/html", function(done) {
+describe("Test blog GET Endpoint", function() {
+  describe("GET /api/article/all", function() {
+    it("Should have empty array or array of articles", function(done) {
       supertest(app)
-        .get("/post/create")
+        .get("/api/article/all")
         .set("User-Agent", "API testing")
-        .expect("Content-Type", "text/html; charset=utf-8")
+        .expect("Content-Type", "application/json; charset=utf-8")
         .expect(200)
         .end(done);
     });
-    it("should have a form!", function(done) {
-      supertest(app)
-        .get("/post/create")
-        .set("User-Agent", "API testing")
-        .expect(function(res) {
-          console.log(res.text);
-          assert(res.text.search("<form>.*</form>") != -1);
-        })
-        .expect(200)
-        .end(done);
-    });
+  })
+})
+
+
+describe("Test blog POST Endpoint", function() {
+  describe("POST /api/article", function() {
+    it('Should create an article', function(done) {
+        supertest(app)
+          .post('/api/article')
+          .send({"type":"CREATE", "article":{"title":"Test title", "author": "Test author", "date": new Date(), "content": "Test content"}})
+          .expect(200)
+          .end(function(err, res) {
+            if (err) done(err);
+
+             });
+          done();
+      });
   })
 })

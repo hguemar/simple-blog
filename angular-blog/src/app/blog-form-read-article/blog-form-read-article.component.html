@@ -1,0 +1,6 @@
+<div class="blog-article-read" *ngIf="article !== undefined">
+  <h1><u>{{article.title}}</u></h1>
+  <h4>{{getDateStr(article.date)}} - {{article.author}}</h4>
+
+  <p>{{article.content}}</p>
+</div>
