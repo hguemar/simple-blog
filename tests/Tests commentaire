@@ -1,0 +1,14 @@
+On à essayer de procéder à un test sur la création du script sur le makeString dans 
+l'utile mais il reste bizarrement en pending
+
+
+
+[nosql@localhost simple-blog]$ node_modules/mocha/bin/mocha  tests/test_script.js 
+
+
+  test taille chaine
+    - should return 5
+
+
+  0 passing (7ms)
+  1 pending
