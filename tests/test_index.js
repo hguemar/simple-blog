@@ -11,12 +11,12 @@ describe("test blog index endpoint", function() {
       .expect(200)
       .end(done);
   });
-  it("should have title \"Simple Blog\"", function(done) {
+  it("should have title \"Blog\"", function(done) {
       supertest(app)
       .get("/")
       .set("User-Agent", "API testing")
       .expect(function(res) {
-        assert(res.text.includes("<title>Simple Blog</title>"));
+        assert(res.text.includes("<title>Blog</title>"));
       })
       .expect(200)
       .end(done);

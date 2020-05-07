@@ -1,5 +1,32 @@
-doctype html 
-head
-  title XXX
-body
-  Hello world
+doctype html
+html(lang="en")
+  head
+    title Blog
+    style
+      include style/w3blog.css
+      include style/custom.css
+  body(class='w3-light-grey')
+    div(class='w3-content')
+      header(class='w3-container w3-center w3-padding-32')
+        h1 Blongo
+
+      // Menu
+      div(class='w3-bar w3-theme-d2 w3-left-align w3-large')
+        form(action='/post/create', method='GET')
+          input(type="submit", value="Nouveau post", class='w3-bar-item w3-indigo w3-hover-deep-purple cust-margin')
+      div(class='w3-bar w3-theme-d2 w3-left-align w3-large')
+        p
+          Page 
+          each page in pages
+            a(href='/?page='+page class='w3-bar-item w3-indigo w3-hover-deep-purple cust-margin') #{page}
+
+      // Posts
+      each post in posts
+        div(class='w3-card-4 w3-margin w3-white w3-container')
+          - var postId = post._id
+          a(href='/post?postId='+postId)
+            h2 #{post.titre}
+          div(class='cust-metadata')
+            p(class='date') Date : #{post.date}
+            p(class='auteur') Auteur : #{post.auteur}
+          div(class='contenu') #{post.contenu}

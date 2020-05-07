@@ -1,0 +1,35 @@
+.cust-form{
+  display: block;
+  padding: 3em;
+  margin: 1em;
+  border:1px solid #2196F3!important;
+  border-radius:3em;
+}
+.cust-form label{
+  display: block;
+  margin-top: 1em;
+  font-weight: bold;
+}
+.cust-form label::after{
+  content: ' : '
+}
+.cust-form input, .cust-form textarea {
+  display: block;
+  margin-top: .5em;
+  margin-bottom: .5em;
+  margin-left: 1em;
+}
+
+.cust-metadata, h1, h2 {
+  color: #000043;
+}
+h1, h2 {
+  font-weight: bold;
+}
+.cust-metadata {
+  font-weight: 3;
+}
+.cust-margin {
+  margin-left: .25em;
+  margin-right: .25em;
+}
